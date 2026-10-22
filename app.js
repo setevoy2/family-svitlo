@@ -37,7 +37,8 @@
     return `через ${formatDuration(remaining)}`;
   }
 
-  function staleDataMessage(checkedAt, now = new Date()) {
+  function staleDataMessage(status, checkedAt, now = new Date()) {
+    if (safeStatus(status) !== "unknown") return "";
     const checked = new Date(checkedAt);
     if (Number.isNaN(checked.getTime())) return "Дані давно не оновлювалися.";
     const age = now - checked;
@@ -111,7 +112,7 @@
     }
 
     const freshnessWarning = el("freshness-warning");
-    const freshnessMessage = staleDataMessage(data.checkedAt, now);
+    const freshnessMessage = staleDataMessage(data.status, data.checkedAt, now);
     freshnessWarning.hidden = !freshnessMessage;
     freshnessWarning.textContent = freshnessMessage;
   }
