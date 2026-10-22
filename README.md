@@ -10,9 +10,9 @@
 часовий текст — кожні 30 секунд, `data.json` — щохвилини.
 
 GitHub Pages примусово віддає статичні файли з `Cache-Control: max-age=600`, і власні HTTP-заголовки
-для Pages налаштувати не можна. Тому CSS і JavaScript мають version query в `index.html`, який
-потрібно змінювати при кожному deploy інтерфейсу. `data.json` завантажується з унікальним timestamp
-query та `cache: no-store`, тому актуальний статус не залежить від десятиихвилинного кешу Pages.
+для Pages налаштувати не можна. Тому CSS і JavaScript мають fingerprint у назві файла; при deploy
+інтерфейсу створюється нове ім'я та оновлюється `index.html`. `data.json` завантажується з унікальним
+timestamp query та `cache: no-store`, тому актуальний статус не залежить від браузерного кешу.
 
 Публічна адреса після ввімкнення GitHub Pages:
 
