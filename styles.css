@@ -215,7 +215,7 @@ main { padding-block: 44px 64px; }
   line-height: 1.5;
 }
 
-.schedule-section { margin-top: 58px; }
+.schedule-section { margin-top: 50px; }
 .section-heading {
   display: flex;
   flex-direction: column;
@@ -224,9 +224,10 @@ main { padding-block: 44px 64px; }
   margin-bottom: 20px;
 }
 .section-heading h2 {
-  margin: 8px 0 0;
-  font-size: 30px;
+  margin: 10px 0 0;
+  font-size: clamp(36px, 7vw, 52px);
   font-weight: 560;
+  line-height: 1;
   letter-spacing: -0.04em;
 }
 
@@ -369,7 +370,7 @@ a:focus-visible { outline: 2px solid var(--state); outline-offset: 4px; border-r
   .status-meta div { display: block; padding: 17px 20px 4px 0; border-bottom: 0; }
   .status-meta div + div { padding-left: 20px; border-left: 1px solid var(--line); }
   .status-meta dd { margin-top: 7px; text-align: left; }
-  .section-heading { flex-direction: row; align-items: end; justify-content: space-between; }
+  .section-heading { flex-direction: row; align-items: end; justify-content: space-between; margin-bottom: 26px; }
   .footer-inner { flex-direction: row; justify-content: space-between; }
 }
 
