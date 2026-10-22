@@ -16,6 +16,27 @@
   };
 
   const el = (id) => document.getElementById(id);
+  let latestData = null;
+
+  function formatDuration(milliseconds) {
+    const totalMinutes = Math.max(0, Math.floor(milliseconds / 60000));
+    if (totalMinutes < 1) return "менше хвилини";
+    const days = Math.floor(totalMinutes / 1440);
+    const hours = Math.floor((totalMinutes % 1440) / 60);
+    const minutes = totalMinutes % 60;
+    return [days ? `${days} д` : "", hours ? `${hours} год` : "", minutes ? `${minutes} хв` : ""]
+      .filter(Boolean)
+      .join(" ");
+  }
+
+  function formatCountdown(target, now = new Date()) {
+    const remaining = target.getTime() - now.getTime();
+    if (!Number.isFinite(remaining)) return "";
+    if (remaining <= 0) return "зараз";
+    return `через ${formatDuration(remaining)}`;
+  }
+
+  globalThis.__familySvitloTime = { formatDuration, formatCountdown };
 
   function safeStatus(value) {
     return Object.prototype.hasOwnProperty.call(STATUS, value) ? value : "unknown";
@@ -61,6 +82,24 @@
     document.body.dataset.status = normalized;
     el("status-heading").textContent = content.title;
     el("status-description").textContent = content.description;
+  }
+
+  function updateTemporalText(data, now = new Date()) {
+    const normalized = safeStatus(data.status);
+    const changedAt = new Date(data.actualChangedAt);
+    if ((normalized === "on" || normalized === "off") && !Number.isNaN(changedAt.getTime())) {
+      const prefix = normalized === "on" ? "Світло є вже" : "Світла немає вже";
+      el("status-description").textContent = `${prefix} ${formatDuration(now - changedAt)}.`;
+    }
+
+    const transition = data.nextTransition;
+    const transitionAt = new Date(transition?.at);
+    if (transition?.at && STATUS[safeStatus(transition.status)] && !Number.isNaN(transitionAt.getTime())) {
+      const next = STATUS[safeStatus(transition.status)].title.toLocaleLowerCase("uk-UA");
+      el("next-transition").textContent = `${formatDateTime(transition.at, data.timezone)} — ${next} · ${formatCountdown(transitionAt, now)}`;
+    } else {
+      el("next-transition").textContent = "Не заплановано";
+    }
   }
 
   function summarize(periods) {
@@ -147,16 +186,10 @@
   }
 
   function render(data) {
+    latestData = data;
     setStatus(data.status);
     el("checked-at").textContent = formatDateTime(data.checkedAt, data.timezone);
-
-    const transition = data.nextTransition;
-    if (transition?.at && STATUS[safeStatus(transition.status)]) {
-      const next = STATUS[safeStatus(transition.status)].title.toLocaleLowerCase("uk-UA");
-      el("next-transition").textContent = `${formatDateTime(transition.at, data.timezone)} — ${next}`;
-    } else {
-      el("next-transition").textContent = "Не заплановано";
-    }
+    updateTemporalText(data);
 
     renderSchedule("today", data.schedules?.today);
     renderSchedule("tomorrow", data.schedules?.tomorrow);
@@ -187,14 +220,22 @@
     alert.textContent = "Не вдалося завантажити актуальні дані. Спробуйте оновити сторінку пізніше.";
   }
 
-  fetch("./data.json", { cache: "no-store", headers: { Accept: "application/json" } })
-    .then((response) => {
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      return response.json();
-    })
-    .then(render)
-    .catch((error) => {
-      console.error("Не вдалося завантажити data.json:", error);
-      renderError();
-    });
+  function loadData(showError = true) {
+    return fetch("./data.json", { cache: "no-store", headers: { Accept: "application/json" } })
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then(render)
+      .catch((error) => {
+        console.error("Не вдалося завантажити data.json:", error);
+        if (showError) renderError();
+      });
+  }
+
+  loadData();
+  setInterval(() => {
+    if (latestData) updateTemporalText(latestData);
+  }, 30000);
+  setInterval(() => loadData(false), 60000);
 })();
