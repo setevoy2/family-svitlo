@@ -369,10 +369,7 @@ a:focus-visible { outline: 2px solid var(--state); outline-offset: 4px; border-r
   main { padding-block: 32px 88px; }
   .status-panel { padding: 20px 40px 14px; }
   .status-description { font-size: 16px; }
-  .status-meta { grid-template-columns: 1fr 1fr; }
-  .status-meta div { display: block; padding: 9px 20px 2px 0; border-bottom: 0; }
-  .status-meta div + div { padding-left: 20px; border-left: 1px solid var(--line); }
-  .status-meta dd { margin-top: 7px; text-align: left; }
+  .status-meta div { padding: 9px 0 2px; border-bottom: 0; }
   .section-heading { flex-direction: row; align-items: end; justify-content: space-between; margin-bottom: 14px; }
   .footer-inner { flex-direction: row; justify-content: space-between; }
 }

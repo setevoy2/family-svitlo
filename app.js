@@ -17,6 +17,7 @@
 
   const el = (id) => document.getElementById(id);
   let latestData = null;
+  const STALE_AFTER_MS = 5 * 60 * 1000;
 
   function formatDuration(milliseconds) {
     const totalMinutes = Math.max(0, Math.floor(milliseconds / 60000));
@@ -36,7 +37,15 @@
     return `через ${formatDuration(remaining)}`;
   }
 
-  globalThis.__familySvitloTime = { formatDuration, formatCountdown };
+  function staleDataMessage(checkedAt, now = new Date()) {
+    const checked = new Date(checkedAt);
+    if (Number.isNaN(checked.getTime())) return "Дані давно не оновлювалися.";
+    const age = now - checked;
+    if (age < STALE_AFTER_MS) return "";
+    return `Дані не оновлювалися ${formatDuration(age)}.`;
+  }
+
+  globalThis.__familySvitloTime = { formatDuration, formatCountdown, staleDataMessage };
 
   function safeStatus(value) {
     return Object.prototype.hasOwnProperty.call(STATUS, value) ? value : "unknown";
@@ -100,6 +109,11 @@
     } else {
       el("next-transition").textContent = "Не заплановано";
     }
+
+    const freshnessWarning = el("freshness-warning");
+    const freshnessMessage = staleDataMessage(data.checkedAt, now);
+    freshnessWarning.hidden = !freshnessMessage;
+    freshnessWarning.textContent = freshnessMessage;
   }
 
   function summarize(periods) {
@@ -188,7 +202,6 @@
   function render(data) {
     latestData = data;
     setStatus(data.status);
-    el("checked-at").textContent = formatDateTime(data.checkedAt, data.timezone);
     updateTemporalText(data);
 
     renderSchedule("today", data.schedules?.today);
@@ -211,8 +224,8 @@
 
   function renderError() {
     setStatus("unknown");
-    el("checked-at").textContent = "не вдалося перевірити";
     el("next-transition").textContent = "Немає даних";
+    el("freshness-warning").hidden = true;
     renderSchedule("today", null);
     renderSchedule("tomorrow", null);
     const alert = el("data-alert");
