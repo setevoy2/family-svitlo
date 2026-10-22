@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b0d0e">
+  <meta name="description" content="Публічна сторінка фактичного стану електропостачання та планового графіка ЖК Family.">
+  <title>ЖК Family • Світло</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-status="unknown">
+  <a class="skip-link" href="#main">До основного вмісту</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="./" aria-label="ЖК Family • Світло — головна">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>ЖК Family <span class="brand-divider">•</span> Світло</span>
+      </a>
+      <span class="live-label"><span class="live-dot" aria-hidden="true"></span>Актуальний стан</span>
+    </div>
+  </header>
+
+  <main id="main" class="shell">
+    <section class="status-panel" aria-labelledby="status-heading">
+      <div class="status-copy">
+        <p class="eyebrow">Фактичний стан зараз</p>
+        <div class="status-line">
+          <span class="status-orb" aria-hidden="true"><span></span></span>
+          <h1 id="status-heading" class="status-title">Перевіряємо…</h1>
+        </div>
+        <p id="status-description" class="status-description">Отримуємо останні дані про електропостачання.</p>
+      </div>
+      <dl class="status-meta">
+        <div>
+          <dt>Дані оновлено</dt>
+          <dd id="checked-at">—</dd>
+        </div>
+        <div>
+          <dt>Наступна зміна за планом</dt>
+          <dd id="next-transition">—</dd>
+        </div>
+      </dl>
+      <p id="data-alert" class="data-alert" role="alert" hidden></p>
+    </section>
+
+    <section class="schedule-section" aria-labelledby="schedule-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Планові відключення</p>
+          <h2 id="schedule-heading">Графік</h2>
+        </div>
+        <div class="legend" aria-label="Позначення графіка">
+          <span><i class="legend-swatch is-on" aria-hidden="true"></i>Світло є</span>
+          <span><i class="legend-swatch is-off" aria-hidden="true"></i>Світла немає</span>
+          <span><i class="legend-swatch is-unknown" aria-hidden="true"></i>Немає даних</span>
+        </div>
+      </div>
+
+      <div class="schedule-grid">
+        <article id="today-card" class="schedule-card" aria-labelledby="today-title">
+          <div class="card-heading">
+            <div>
+              <p class="day-kicker">Сьогодні</p>
+              <h3 id="today-title">—</h3>
+            </div>
+            <span id="today-summary" class="day-summary">Завантаження</span>
+          </div>
+          <div id="today-timeline" class="timeline-host" aria-live="polite">
+            <div class="timeline-skeleton" aria-hidden="true"></div>
+          </div>
+        </article>
+
+        <article id="tomorrow-card" class="schedule-card" aria-labelledby="tomorrow-title">
+          <div class="card-heading">
+            <div>
+              <p class="day-kicker">Завтра</p>
+              <h3 id="tomorrow-title">—</h3>
+            </div>
+            <span id="tomorrow-summary" class="day-summary">Завантаження</span>
+          </div>
+          <div id="tomorrow-timeline" class="timeline-host" aria-live="polite">
+            <div class="timeline-skeleton" aria-hidden="true"></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <aside class="notice" aria-label="Важлива примітка">
+      <span class="notice-symbol" aria-hidden="true">i</span>
+      <div>
+        <h2>Графік є плановим</h2>
+        <p id="disclaimer">Фактичний час відключень може змінюватися. Орієнтуйтеся на великий статус угорі сторінки.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>Публічний інформаційний сервіс мешканців</p>
+      <p>Джерело: <a id="source-link" href="#" target="_blank" rel="noopener noreferrer">не вказано</a></p>
+    </div>
+  </footer>
+
+  <noscript><div class="noscript">Для відображення актуальних даних увімкніть JavaScript.</div></noscript>
+</body>
+</html>
