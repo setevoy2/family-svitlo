@@ -221,7 +221,7 @@
   }
 
   function loadData(showError = true) {
-    return fetch("./data.json", { cache: "no-store", headers: { Accept: "application/json" } })
+    return fetch(`./data.json?v=${Date.now()}`, { cache: "no-store", headers: { Accept: "application/json" } })
       .then((response) => {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return response.json();
