@@ -8,4 +8,4 @@
 
 Публічна адреса після ввімкнення GitHub Pages:
 
-<https://setevoy2.github.io/family-svitlo/>
+<https://svitlo.setevoy.org.ua/>
