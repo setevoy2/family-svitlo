@@ -119,17 +119,18 @@ a { color: inherit; }
   white-space: nowrap;
   transition: color 120ms ease;
 }
-.header-resources .group-link {
+.header-resources .resource-link {
   display: inline-flex;
   align-items: center;
   gap: 9px;
   color: var(--muted);
 }
-.group-link img {
+.resource-logo {
   flex: 0 0 auto;
   width: 30px;
   height: 30px;
   border-radius: 8px;
+  object-fit: cover;
 }
 .header-resources a + a::before {
   content: "";
