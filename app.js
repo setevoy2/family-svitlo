@@ -136,6 +136,18 @@
     el("status-description").textContent = content.description;
   }
 
+  function renderEmergencyMode(emergency) {
+    const panel = el("emergency-panel");
+    if (!panel) return;
+    const active = emergency?.state === "emergency";
+    panel.hidden = !active;
+    if (!active) return;
+    const source = el("emergency-source");
+    if (source && emergency?.source?.url && /^https?:\/\//i.test(emergency.source.url)) {
+      source.href = emergency.source.url;
+    }
+  }
+
   function updateTemporalText(data, now = new Date()) {
     const normalized = safeStatus(data.status);
     const changedAt = new Date(data.actualChangedAt);
@@ -264,6 +276,7 @@
   function render(data) {
     latestData = data;
     setStatus(data.status);
+    renderEmergencyMode(data.emergencyMode);
 
     renderSchedule("today", data.schedules?.today);
     renderSchedule("tomorrow", data.schedules?.tomorrow);
@@ -286,6 +299,7 @@
 
   function renderError() {
     setStatus("unknown");
+    renderEmergencyMode(null);
     el("next-transition").textContent = "Немає даних";
     el("freshness-warning").hidden = true;
     renderSchedule("today", null);
