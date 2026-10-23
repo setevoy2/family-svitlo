@@ -249,7 +249,7 @@ main { padding-block: 28px 64px; }
   z-index: 20;
   right: -7px;
   bottom: calc(100% + 9px);
-  width: min(280px, calc(100vw - 48px));
+  width: min(390px, calc(100vw - 48px));
   padding: 9px 11px;
   border: 1px solid rgba(242, 196, 95, 0.34);
   border-radius: 9px;
@@ -260,6 +260,7 @@ main { padding-block: 28px 64px; }
   font-weight: 500;
   line-height: 1.45 !important;
   text-align: left;
+  white-space: pre-line;
   pointer-events: none;
   opacity: 0;
   transform: translateY(4px);
