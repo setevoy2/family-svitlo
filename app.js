@@ -54,7 +54,41 @@
     return "даних не буде";
   }
 
-  globalThis.__familySvitloTime = { formatDuration, formatCountdown, staleDataMessage, plannedTransitionLabel };
+  function currentTimeMarker(scheduleDate, timezone, now = new Date()) {
+    if (typeof scheduleDate !== "string") return null;
+    let parts;
+    try {
+      parts = new Intl.DateTimeFormat("en-GB", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hourCycle: "h23",
+        timeZone: timezone || "Europe/Kyiv"
+      }).formatToParts(now);
+    } catch {
+      return null;
+    }
+    const value = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    const currentDate = `${value.year}-${value.month}-${value.day}`;
+    if (currentDate !== scheduleDate) return null;
+    const minutes = Number(value.hour) * 60 + Number(value.minute) + Number(value.second) / 60;
+    if (!Number.isFinite(minutes)) return null;
+    return {
+      percent: Math.min(100, Math.max(0, (minutes / 1440) * 100)),
+      label: `${value.hour}:${value.minute}`
+    };
+  }
+
+  globalThis.__familySvitloTime = {
+    formatDuration,
+    formatCountdown,
+    staleDataMessage,
+    plannedTransitionLabel,
+    currentTimeMarker
+  };
 
   function safeStatus(value) {
     return Object.prototype.hasOwnProperty.call(STATUS, value) ? value : "unknown";
@@ -123,6 +157,18 @@
     const freshnessMessage = staleDataMessage(data.status, data.checkedAt, now);
     freshnessWarning.hidden = !freshnessMessage;
     freshnessWarning.textContent = freshnessMessage;
+
+    const marker = el("today-now-marker");
+    if (marker) {
+      const position = currentTimeMarker(data.schedules?.today?.date, data.timezone, now);
+      marker.hidden = !position;
+      if (position) {
+        marker.style.left = `${position.percent}%`;
+        marker.dataset.edge = position.percent < 7 ? "start" : position.percent > 93 ? "end" : "middle";
+        marker.setAttribute("aria-label", `Зараз ${position.label}`);
+        marker.querySelector("span").textContent = position.label;
+      }
+    }
   }
 
   function summarize(periods) {
@@ -192,6 +238,13 @@
       track.append(segment);
     });
 
+    const marker = document.createElement("div");
+    marker.className = "current-time-marker";
+    marker.id = `${kind}-now-marker`;
+    marker.hidden = true;
+    marker.setAttribute("role", "img");
+    marker.innerHTML = "<span></span>";
+
     const axis = document.createElement("div");
     axis.className = "timeline-axis";
     axis.setAttribute("aria-hidden", "true");
@@ -205,16 +258,16 @@
       list.append(item);
     });
 
-    host.replaceChildren(track, axis, list);
+    host.replaceChildren(track, marker, axis, list);
   }
 
   function render(data) {
     latestData = data;
     setStatus(data.status);
-    updateTemporalText(data);
 
     renderSchedule("today", data.schedules?.today);
     renderSchedule("tomorrow", data.schedules?.tomorrow);
+    updateTemporalText(data);
 
     if (typeof data.disclaimer === "string" && data.disclaimer.trim()) {
       el("disclaimer").textContent = data.disclaimer.trim();
