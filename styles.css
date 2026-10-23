@@ -159,6 +159,7 @@ a { color: inherit; }
   background: var(--state);
   box-shadow: 0 0 0 4px var(--state-soft);
 }
+.mobile-group-link { display: none; }
 
 main { padding-block: 28px 64px; }
 
@@ -591,6 +592,22 @@ a:focus-visible { outline: 2px solid var(--state); outline-offset: 4px; border-r
 @media (max-width: 899px) {
   .header-inner { grid-template-columns: auto auto; justify-content: space-between; }
   .header-resources { display: none; }
+  .live-label { display: none; }
+  .mobile-group-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 650;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .mobile-group-link img {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+  }
 }
 
 @media (max-width: 619px) {
