@@ -349,7 +349,7 @@
     marker.innerHTML = "<span></span>";
 
     const axis = document.createElement("div");
-    axis.className = "timeline-axis";
+    axis.className = "timeline-axis timeline-axis-transitions";
     axis.setAttribute("aria-hidden", "true");
     transitionAxisLabels(periods).forEach((label) => {
       const tick = document.createElement("span");
@@ -363,6 +363,11 @@
       axis.append(tick);
     });
 
+    const mobileAxis = document.createElement("div");
+    mobileAxis.className = "timeline-axis timeline-axis-mobile";
+    mobileAxis.setAttribute("aria-hidden", "true");
+    mobileAxis.innerHTML = "<span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span>";
+
     const list = document.createElement("ul");
     list.className = "period-list";
     periods.forEach((period) => {
@@ -372,7 +377,7 @@
     });
 
     host.classList.toggle("has-factual-timeline", facts.length > 0);
-    host.replaceChildren(comparison, marker, axis, list);
+    host.replaceChildren(comparison, marker, axis, mobileAxis, list);
   }
 
   function render(data) {

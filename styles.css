@@ -455,6 +455,7 @@ main { padding-block: 28px 64px; }
 }
 .timeline-axis-label[data-edge="start"] .timeline-axis-label-text { transform: translateX(0); }
 .timeline-axis-label[data-edge="end"] .timeline-axis-label-text { transform: translateX(-100%); }
+.timeline-axis-mobile { display: none; }
 .timeline-host.has-factual-timeline .timeline-axis {
   margin-left: calc(var(--timeline-label-width) + 10px);
 }
@@ -549,8 +550,8 @@ a:focus-visible { outline: 2px solid var(--state); outline-offset: 4px; border-r
   .card-heading { gap: 10px; }
   .card-heading h3 { font-size: 17px; }
   .day-summary { padding-inline: 10px; font-size: 10px; }
-  .timeline-axis { height: 34px; font-size: 10px; }
-  .timeline-axis-label:nth-child(even) .timeline-axis-label-text { top: 16px; }
+  .timeline-axis-transitions { display: none; }
+  .timeline-axis-mobile { display: flex; justify-content: space-between; height: 16px; font-size: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
