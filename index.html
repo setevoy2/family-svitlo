@@ -8,8 +8,8 @@
   <meta name="description" content="Публічна сторінка фактичного стану електропостачання та планового графіка ЖК Family.">
   <title>ЖК Family • Світло</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.20261023-7.css">
-  <script src="app.20261023-7.js" defer></script>
+  <link rel="stylesheet" href="styles.20261023-8.css">
+  <script src="app.20261023-8.js" defer></script>
 </head>
 <body data-status="unknown">
   <a class="skip-link" href="#main">До основного вмісту</a>
@@ -28,11 +28,21 @@
     <section class="status-panel" aria-labelledby="status-heading">
       <div class="status-copy">
         <p class="eyebrow">Фактичний стан зараз</p>
-        <div class="status-line">
-          <span class="status-orb" aria-hidden="true"><span></span></span>
-          <h1 id="status-heading" class="status-title">Перевіряємо…</h1>
+        <div class="status-line-main">
+          <div class="status-primary">
+            <div class="status-line">
+              <span class="status-orb" aria-hidden="true"><span></span></span>
+              <h1 id="status-heading" class="status-title">Перевіряємо…</h1>
+            </div>
+            <p id="status-description" class="status-description">Отримуємо останні дані про електропостачання.</p>
+          </div>
+          <aside id="emergency-panel" class="emergency-panel" aria-label="Режим енергосистеми" hidden>
+            <div><strong id="emergency-heading">Непланові відключення</strong><span>Графік не гарантований</span></div>
+            <button id="emergency-help" class="emergency-help" type="button" aria-label="Що означає цей режим?" aria-describedby="emergency-help-tooltip">?
+              <span id="emergency-help-tooltip" class="emergency-help-tooltip" role="tooltip"></span>
+            </button>
+          </aside>
         </div>
-        <p id="status-description" class="status-description">Отримуємо останні дані про електропостачання.</p>
       </div>
       <div class="status-footer">
         <dl class="status-meta">
@@ -41,12 +51,6 @@
             <dd id="next-transition">—</dd>
           </div>
         </dl>
-        <aside id="emergency-panel" class="emergency-panel" aria-label="Режим енергосистеми" hidden>
-          <div><strong id="emergency-heading">Непланові відключення</strong><span>Графік не гарантований</span></div>
-          <button id="emergency-help" class="emergency-help" type="button" aria-label="Що означає цей режим?" aria-describedby="emergency-help-tooltip">?
-            <span id="emergency-help-tooltip" class="emergency-help-tooltip" role="tooltip"></span>
-          </button>
-        </aside>
       </div>
       <p id="freshness-warning" class="data-alert" role="status" hidden></p>
       <p id="data-alert" class="data-alert" role="alert" hidden></p>
@@ -65,10 +69,7 @@
       <div class="schedule-grid">
         <article id="today-card" class="schedule-card" aria-labelledby="today-title">
           <div class="card-heading">
-            <div>
-              <p class="day-kicker">Сьогодні</p>
-              <h3 id="today-title">—</h3>
-            </div>
+            <h3 id="today-title">Сьогодні</h3>
             <span id="today-summary" class="day-summary">Завантаження</span>
           </div>
           <div id="today-timeline" class="timeline-host" aria-live="polite">
@@ -78,10 +79,7 @@
 
         <article id="tomorrow-card" class="schedule-card" aria-labelledby="tomorrow-title">
           <div class="card-heading">
-            <div>
-              <p class="day-kicker">Завтра</p>
-              <h3 id="tomorrow-title">—</h3>
-            </div>
+            <h3 id="tomorrow-title">Завтра</h3>
             <span id="tomorrow-summary" class="day-summary">Завантаження</span>
           </div>
           <div id="tomorrow-timeline" class="timeline-host" aria-live="polite">

@@ -87,7 +87,8 @@
     formatCountdown,
     staleDataMessage,
     plannedTransitionLabel,
-    currentTimeMarker
+    currentTimeMarker,
+    scheduleDateLabel
   };
 
   function safeStatus(value) {
@@ -105,6 +106,11 @@
     const date = new Date(`${dateString}T12:00:00`);
     if (Number.isNaN(date.getTime())) return dateString || "Дата не вказана";
     return new Intl.DateTimeFormat("uk-UA", { day: "numeric", month: "long" }).format(date);
+  }
+
+  function scheduleDateLabel(kind, dateString) {
+    const prefix = kind === "tomorrow" ? "Завтра" : "Сьогодні";
+    return `${prefix}, ${formatDate(dateString)}`;
   }
 
   function formatDateTime(value, timezone) {
@@ -278,7 +284,7 @@
     }
 
     const periods = validPeriods(schedule.periods);
-    title.textContent = formatDate(schedule.date);
+    title.textContent = scheduleDateLabel(kind, schedule.date);
     summary.textContent = periods.length ? summarize(periods) : "немає даних";
 
     if (!periods.length) {
