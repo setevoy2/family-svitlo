@@ -8,8 +8,8 @@
   <meta name="description" content="Публічна сторінка фактичного стану електропостачання та планового графіка ЖК Family.">
   <title>ЖК Family • Світло</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.20261023-3.css">
-  <script src="app.20261023-3.js" defer></script>
+  <link rel="stylesheet" href="styles.20261023-4.css">
+  <script src="app.20261023-4.js" defer></script>
 </head>
 <body data-status="unknown">
   <a class="skip-link" href="#main">До основного вмісту</a>
@@ -42,8 +42,10 @@
           </div>
         </dl>
         <aside id="emergency-panel" class="emergency-panel" aria-label="Режим енергосистеми" hidden>
-          <div><strong>Екстрені / аварійні відключення</strong><span>Графік не гарантований</span></div>
-          <a id="emergency-source" href="#" target="_blank" rel="noopener noreferrer">Джерело</a>
+          <div><strong id="emergency-heading">Непланові відключення</strong><span>Графік не гарантований</span></div>
+          <button id="emergency-help" class="emergency-help" type="button" aria-label="Що означає цей режим?" aria-describedby="emergency-help-tooltip">?
+            <span id="emergency-help-tooltip" class="emergency-help-tooltip" role="tooltip"></span>
+          </button>
         </aside>
       </div>
       <p id="freshness-warning" class="data-alert" role="status" hidden></p>

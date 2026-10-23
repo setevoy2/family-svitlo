@@ -142,10 +142,11 @@
     const active = emergency?.state === "emergency";
     panel.hidden = !active;
     if (!active) return;
-    const source = el("emergency-source");
-    if (source && emergency?.source?.url && /^https?:\/\//i.test(emergency.source.url)) {
-      source.href = emergency.source.url;
-    }
+    const accident = emergency?.type === "accident";
+    el("emergency-heading").textContent = accident ? "Аварійні відключення" : "Екстрені відключення";
+    el("emergency-help-tooltip").textContent = accident
+      ? "Аварійні відключення виникають через пошкодження або відмову елементів електромережі. Їх неможливо точно спрогнозувати."
+      : "Екстрені відключення вводять раптово для швидкого балансування енергосистеми. Графіки в цей час не діють.";
   }
 
   function updateTemporalText(data, now = new Date()) {
