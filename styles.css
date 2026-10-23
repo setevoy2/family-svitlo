@@ -15,6 +15,9 @@
   --conflict-soft: rgba(242, 196, 95, 0.14);
   --unknown: #9aa19e;
   --unknown-soft: rgba(154, 161, 158, 0.12);
+  --actual-on: #4c7e65;
+  --actual-off: #895654;
+  --timeline-label-width: 82px;
   --state: var(--unknown);
   --state-soft: var(--unknown-soft);
   --radius: 18px;
@@ -332,6 +335,20 @@ main { padding-block: 28px 64px; }
 }
 
 .timeline-host { position: relative; margin-top: 28px; }
+.timeline-comparison {
+  display: grid;
+  grid-template-columns: var(--timeline-label-width) minmax(0, 1fr);
+  align-items: center;
+  gap: 8px 10px;
+}
+.timeline-comparison:not(.has-facts) { display: block; }
+.timeline-row-label {
+  color: var(--quiet);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 .timeline-track {
   position: relative;
   height: 36px;
@@ -346,6 +363,17 @@ main { padding-block: 28px 64px; }
 .timeline-segment.is-conflict { background: var(--conflict); }
 .timeline-segment.is-unknown { background: #555b58; }
 .timeline-segment + .timeline-segment { border-left: 3px solid var(--surface); }
+.timeline-factual-track { height: 12px; border-radius: 6px; }
+.timeline-factual-track .timeline-segment.is-on { background: var(--actual-on); }
+.timeline-factual-track .timeline-segment.is-off { background: var(--actual-off); }
+.timeline-factual-track .timeline-segment.is-conflict { background: #8f7847; }
+.timeline-factual-track .timeline-segment.is-unknown { background: #444b48; }
+.timeline-future {
+  position: absolute;
+  inset-block: 0;
+  background: repeating-linear-gradient(135deg, #1c2223 0 3px, #293032 3px 4px);
+  box-shadow: inset 1px 0 0 var(--surface);
+}
 
 .current-time-marker {
   position: absolute;
@@ -388,6 +416,8 @@ main { padding-block: 28px 64px; }
 }
 .current-time-marker[data-edge="start"] span { transform: translateX(-8%); }
 .current-time-marker[data-edge="end"] span { transform: translateX(-92%); }
+.timeline-host.has-factual-timeline .current-time-marker { height: 56px; }
+.timeline-host.has-factual-timeline .timeline-axis::before { top: -69px; height: 56px; }
 
 .timeline-axis {
   position: relative;
@@ -406,6 +436,9 @@ main { padding-block: 28px 64px; }
   width: 1px;
   height: 36px;
   background: rgba(11,13,14,0.34);
+}
+.timeline-host.has-factual-timeline .timeline-axis {
+  margin-left: calc(var(--timeline-label-width) + 10px);
 }
 
 .period-list { display: flex; flex-wrap: wrap; gap: 12px 22px; margin: 24px 0 0; padding: 0; list-style: none; }

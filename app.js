@@ -183,7 +183,9 @@
       const position = currentTimeMarker(data.schedules?.today?.date, data.timezone, now);
       marker.hidden = !position;
       if (position) {
-        marker.style.left = `${position.percent}%`;
+        marker.style.left = marker.closest(".timeline-host")?.classList.contains("has-factual-timeline")
+          ? `calc(var(--timeline-label-width) + 10px + (100% - var(--timeline-label-width) - 10px) * ${position.percent / 100})`
+          : `${position.percent}%`;
         marker.dataset.edge = position.percent < 7 ? "start" : position.percent > 93 ? "end" : "middle";
         marker.setAttribute("aria-label", `Зараз ${position.label}`);
         marker.querySelector("span").textContent = position.label;
@@ -221,7 +223,49 @@
       .sort((a, b) => parseTime(a.start) - parseTime(b.start));
   }
 
-  function renderSchedule(kind, schedule) {
+  function factualPeriods(timeline, timezone, now = new Date()) {
+    if (!timeline || !Array.isArray(timeline.transitions)) return [];
+    const marker = currentTimeMarker(timeline.date, timezone, now);
+    if (!marker) return [];
+    const endMinutes = (marker.percent / 100) * 1440;
+    const transitions = timeline.transitions
+      .map((item) => {
+        const at = new Date(item?.at);
+        if (Number.isNaN(at.getTime())) return null;
+        const parts = new Intl.DateTimeFormat("en-GB", {
+          hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone: timezone || "Europe/Kyiv"
+        }).formatToParts(at);
+        const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+        return { minutes: Number(values.hour) * 60 + Number(values.minute), status: safeStatus(item?.status) };
+      })
+      .filter((item) => item && item.minutes <= endMinutes)
+      .sort((a, b) => a.minutes - b.minutes);
+    if (!transitions.length) return [];
+    const periods = [];
+    if (transitions[0].minutes > 0) periods.push({ startMinutes: 0, endMinutes: transitions[0].minutes, status: "unknown" });
+    transitions.forEach((item, index) => {
+      const next = transitions[index + 1];
+      periods.push({ startMinutes: item.minutes, endMinutes: next ? next.minutes : endMinutes, status: item.status });
+    });
+    return periods.filter((period) => period.endMinutes > period.startMinutes);
+  }
+
+  function makeTrack(periods, className = "timeline-track") {
+    const track = document.createElement("div");
+    track.className = className;
+    periods.forEach((period) => {
+      const segment = document.createElement("span");
+      const start = period.startMinutes ?? parseTime(period.start);
+      const end = period.endMinutes ?? parseTime(period.end);
+      segment.className = `timeline-segment is-${period.status}`;
+      segment.style.left = `${(start / 1440) * 100}%`;
+      segment.style.width = `${((end - start) / 1440) * 100}%`;
+      track.append(segment);
+    });
+    return track;
+  }
+
+  function renderSchedule(kind, schedule, actualTimeline = null, timezone = "Europe/Kyiv") {
     const title = el(`${kind}-title`);
     const summary = el(`${kind}-summary`);
     const host = el(`${kind}-timeline`);
@@ -242,21 +286,40 @@
       return;
     }
 
-    const track = document.createElement("div");
-    track.className = "timeline-track";
+    const track = makeTrack(periods);
     track.setAttribute("role", "img");
     track.setAttribute("aria-label", periods.map((p) => `${p.start}–${p.end}: ${PERIOD_LABELS[p.status]}`).join("; "));
 
-    periods.forEach((period) => {
-      const segment = document.createElement("span");
-      const start = parseTime(period.start);
-      const end = parseTime(period.end);
-      segment.className = `timeline-segment is-${period.status}`;
-      segment.style.left = `${(start / 1440) * 100}%`;
-      segment.style.width = `${((end - start) / 1440) * 100}%`;
+    [...track.children].forEach((segment, index) => {
+      const period = periods[index];
       segment.title = `${period.start}–${period.end}: ${PERIOD_LABELS[period.status]}`;
-      track.append(segment);
     });
+
+    const comparison = document.createElement("div");
+    comparison.className = "timeline-comparison";
+    const facts = kind === "today" && actualTimeline?.date === schedule.date
+      ? factualPeriods(actualTimeline, timezone)
+      : [];
+    if (facts.length) {
+      const factLabel = document.createElement("span");
+      factLabel.className = "timeline-row-label";
+      factLabel.textContent = "Фактично";
+      const factTrack = makeTrack(facts, "timeline-track timeline-factual-track");
+      const future = document.createElement("span");
+      future.className = "timeline-future";
+      const factEnd = facts[facts.length - 1].endMinutes;
+      future.style.left = `${(factEnd / 1440) * 100}%`;
+      future.style.width = `${((1440 - factEnd) / 1440) * 100}%`;
+      factTrack.append(future);
+      comparison.append(factLabel, factTrack);
+      const planLabel = document.createElement("span");
+      planLabel.className = "timeline-row-label";
+      planLabel.textContent = "За графіком";
+      comparison.append(planLabel, track);
+      comparison.classList.add("has-facts");
+    } else {
+      comparison.append(track);
+    }
 
     const marker = document.createElement("div");
     marker.className = "current-time-marker";
@@ -278,7 +341,8 @@
       list.append(item);
     });
 
-    host.replaceChildren(track, marker, axis, list);
+    host.classList.toggle("has-factual-timeline", facts.length > 0);
+    host.replaceChildren(comparison, marker, axis, list);
   }
 
   function render(data) {
@@ -286,8 +350,8 @@
     setStatus(data.status);
     renderEmergencyMode(data.emergencyMode);
 
-    renderSchedule("today", data.schedules?.today);
-    renderSchedule("tomorrow", data.schedules?.tomorrow);
+    renderSchedule("today", data.schedules?.today, data.actualTimeline, data.timezone);
+    renderSchedule("tomorrow", data.schedules?.tomorrow, null, data.timezone);
     updateTemporalText(data);
 
     if (typeof data.disclaimer === "string" && data.disclaimer.trim()) {
