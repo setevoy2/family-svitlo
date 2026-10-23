@@ -196,13 +196,14 @@ main { padding-block: 28px 64px; }
 .status-meta div {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 4px 6px;
   padding-block: 8px;
   border-bottom: 1px solid var(--line);
 }
-.status-meta dt { color: var(--quiet); font-size: 12px; }
-.status-meta dd { margin: 0; color: var(--text); font-size: 13px; font-weight: 600; text-align: right; }
+.status-meta dt { flex: 0 0 auto; color: var(--quiet); font-size: 12px; }
+.status-meta dd { margin: 0; color: var(--text); font-size: 13px; font-weight: 600; text-align: left; }
 
 .data-alert {
   margin: 16px 0 0;

@@ -46,7 +46,15 @@
     return `Дані не оновлювалися ${formatDuration(age)}.`;
   }
 
-  globalThis.__familySvitloTime = { formatDuration, formatCountdown, staleDataMessage };
+  function plannedTransitionLabel(status) {
+    const normalized = safeStatus(status);
+    if (normalized === "off") return "світла не буде";
+    if (normalized === "on") return "світло буде";
+    if (normalized === "conflict") return "дані потребуватимуть перевірки";
+    return "даних не буде";
+  }
+
+  globalThis.__familySvitloTime = { formatDuration, formatCountdown, staleDataMessage, plannedTransitionLabel };
 
   function safeStatus(value) {
     return Object.prototype.hasOwnProperty.call(STATUS, value) ? value : "unknown";
@@ -105,7 +113,7 @@
     const transition = data.nextTransition;
     const transitionAt = new Date(transition?.at);
     if (transition?.at && STATUS[safeStatus(transition.status)] && !Number.isNaN(transitionAt.getTime())) {
-      const next = STATUS[safeStatus(transition.status)].title.toLocaleLowerCase("uk-UA");
+      const next = plannedTransitionLabel(transition.status);
       el("next-transition").textContent = `${formatDateTime(transition.at, data.timezone)} — ${next} · ${formatCountdown(transitionAt, now)}`;
     } else {
       el("next-transition").textContent = "Не заплановано";
