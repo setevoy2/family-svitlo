@@ -3,7 +3,7 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "on",
-  "checkedAt": "2026-10-23T16:40:01.246856+03:00",
+  "checkedAt": "2026-10-23T17:50:01.287035+03:00",
   "actualChangedAt": "2026-10-23T14:56:01.429633+03:00",
   "nextTransition": {
     "status": "off",
@@ -101,7 +101,7 @@
   },
   "source": {
     "label": "єСвітло • Київська область",
-    "url": "https://t.me/esvitlo_kyiv_oblast/7529"
+    "url": "https://t.me/esvitlo_kyiv_oblast/7533"
   },
   "disclaimer": "Графік є плановим і може змінюватися. Фактичний стан показано окремо за результатом останньої перевірки."
 }
