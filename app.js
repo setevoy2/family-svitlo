@@ -88,7 +88,8 @@
     staleDataMessage,
     plannedTransitionLabel,
     currentTimeMarker,
-    scheduleDateLabel
+    scheduleDateLabel,
+    transitionAxisLabels
   };
 
   function safeStatus(value) {
@@ -229,6 +230,19 @@
       .sort((a, b) => parseTime(a.start) - parseTime(b.start));
   }
 
+  function transitionAxisLabels(periods) {
+    const minutes = new Map();
+    periods.forEach((period) => {
+      for (const time of [period.start, period.end]) {
+        const value = parseTime(time);
+        if (value !== null) minutes.set(value, time);
+      }
+    });
+    return [...minutes.entries()]
+      .sort(([left], [right]) => left - right)
+      .map(([value, time]) => ({ time, percent: (value / 1440) * 100 }));
+  }
+
   function factualPeriods(timeline, timezone, now = new Date()) {
     if (!timeline || !Array.isArray(timeline.transitions)) return [];
     const marker = currentTimeMarker(timeline.date, timezone, now);
@@ -337,7 +351,17 @@
     const axis = document.createElement("div");
     axis.className = "timeline-axis";
     axis.setAttribute("aria-hidden", "true");
-    axis.innerHTML = "<span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span>";
+    transitionAxisLabels(periods).forEach((label) => {
+      const tick = document.createElement("span");
+      tick.className = "timeline-axis-label";
+      tick.style.left = `${label.percent}%`;
+      tick.dataset.edge = label.percent === 0 ? "start" : label.percent === 100 ? "end" : "middle";
+      const text = document.createElement("span");
+      text.className = "timeline-axis-label-text";
+      text.textContent = label.time;
+      tick.append(text);
+      axis.append(tick);
+    });
 
     const list = document.createElement("ul");
     list.className = "period-list";

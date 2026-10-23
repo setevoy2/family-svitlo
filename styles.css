@@ -422,26 +422,39 @@ main { padding-block: 28px 64px; }
 .current-time-marker[data-edge="start"] span { transform: translateX(-8%); }
 .current-time-marker[data-edge="end"] span { transform: translateX(-92%); }
 .timeline-host.has-factual-timeline .current-time-marker { height: 56px; }
-.timeline-host.has-factual-timeline .timeline-axis::before { top: -69px; height: 56px; }
 
 .timeline-axis {
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 13px;
+  height: 16px;
+  margin-top: 12px;
   color: var(--quiet);
   font-family: var(--font-mono);
   font-size: 12px;
 }
-.timeline-axis::before {
+.timeline-axis-label {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+.timeline-axis-label::before {
   content: "";
   position: absolute;
-  top: -49px;
-  left: 50%;
+  top: -12px;
+  left: 0;
   width: 1px;
-  height: 36px;
-  background: rgba(11,13,14,0.34);
+  height: 7px;
+  background: var(--line-strong);
 }
+.timeline-axis-label-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+.timeline-axis-label[data-edge="start"] .timeline-axis-label-text { transform: translateX(0); }
+.timeline-axis-label[data-edge="end"] .timeline-axis-label-text { transform: translateX(-100%); }
 .timeline-host.has-factual-timeline .timeline-axis {
   margin-left: calc(var(--timeline-label-width) + 10px);
 }
@@ -536,6 +549,8 @@ a:focus-visible { outline: 2px solid var(--state); outline-offset: 4px; border-r
   .card-heading { gap: 10px; }
   .card-heading h3 { font-size: 17px; }
   .day-summary { padding-inline: 10px; font-size: 10px; }
+  .timeline-axis { height: 34px; font-size: 10px; }
+  .timeline-axis-label:nth-child(even) .timeline-axis-label-text { top: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
