@@ -15,6 +15,13 @@
     unknown: "немає даних"
   };
 
+  const STATUS_FAVICONS = {
+    on: "favicon-on.20261024.svg",
+    off: "favicon-off.20261024.svg",
+    conflict: "favicon-unknown.20261024.svg",
+    unknown: "favicon-unknown.20261024.svg"
+  };
+
   const el = (id) => document.getElementById(id);
   let latestData = null;
 
@@ -85,6 +92,7 @@
     formatCountdown,
     degradationMessage,
     plannedTransitionLabel,
+    statusFaviconHref,
     currentTimeMarker,
     scheduleDateLabel,
     transitionAxisLabels
@@ -92,6 +100,10 @@
 
   function safeStatus(value) {
     return Object.prototype.hasOwnProperty.call(STATUS, value) ? value : "unknown";
+  }
+
+  function statusFaviconHref(status) {
+    return STATUS_FAVICONS[safeStatus(status)];
   }
 
   function parseTime(value) {
@@ -137,6 +149,8 @@
     const normalized = safeStatus(status);
     const content = STATUS[normalized];
     document.body.dataset.status = normalized;
+    const favicon = el("status-favicon");
+    if (favicon) favicon.href = statusFaviconHref(normalized);
     el("status-heading").textContent = content.title;
     el("status-description").textContent = content.description;
   }
