@@ -3,12 +3,12 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "on",
-  "observedAt": "2026-10-24T14:54:01.969320+03:00",
+  "observedAt": "2026-10-24T15:00:02.117787+03:00",
   "statusChangedAt": "2026-10-24T05:29:01.434994+03:00",
-  "publishedAt": "2026-10-24T14:54:01.969320+03:00",
+  "publishedAt": "2026-10-24T15:00:02.117787+03:00",
   "nextTransition": {
-    "status": "off",
-    "at": "2026-10-24T15:00:00+03:00"
+    "status": "on",
+    "at": "2026-10-24T19:00:00+03:00"
   },
   "emergencyMode": {
     "state": "normal",
