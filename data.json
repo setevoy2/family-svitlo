@@ -3,13 +3,10 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "on",
-  "observedAt": "2026-10-24T23:18:01.753174+03:00",
+  "observedAt": "2026-10-25T00:00:02.078557+03:00",
   "statusChangedAt": "2026-10-24T19:13:01.660116+03:00",
-  "publishedAt": "2026-10-24T23:18:01.753174+03:00",
-  "nextTransition": {
-    "status": "off",
-    "at": "2026-10-25T12:00:00+02:00"
-  },
+  "publishedAt": "2026-10-25T00:00:02.078557+03:00",
+  "nextTransition": null,
   "emergencyMode": {
     "state": "normal",
     "type": null,
@@ -21,83 +18,21 @@
     }
   },
   "actualTimeline": {
-    "date": "2026-10-24",
+    "date": "2026-10-25",
     "transitions": [
       {
-        "at": "2026-10-24T00:00:00+03:00",
-        "status": "on"
-      },
-      {
-        "at": "2026-10-24T00:22:00+03:00",
-        "status": "unknown"
-      },
-      {
-        "at": "2026-10-24T04:43:00+03:00",
-        "status": "on"
-      },
-      {
-        "at": "2026-10-24T05:23:00+03:00",
-        "status": "conflict"
-      },
-      {
-        "at": "2026-10-24T05:30:00+03:00",
-        "status": "on"
-      },
-      {
-        "at": "2026-10-24T15:22:00+03:00",
-        "status": "off"
-      },
-      {
-        "at": "2026-10-24T19:14:00+03:00",
+        "at": "2026-10-25T00:00:00+03:00",
         "status": "on"
       }
     ]
   },
   "schedules": {
-    "today": {
-      "date": "2026-10-24",
-      "periods": [
-        {
-          "start": "00:00",
-          "end": "15:00",
-          "status": "on"
-        },
-        {
-          "start": "15:00",
-          "end": "19:00",
-          "status": "off"
-        },
-        {
-          "start": "19:00",
-          "end": "24:00",
-          "status": "on"
-        }
-      ]
-    },
-    "tomorrow": {
-      "date": "2026-10-25",
-      "periods": [
-        {
-          "start": "00:00",
-          "end": "12:00",
-          "status": "on"
-        },
-        {
-          "start": "12:00",
-          "end": "16:00",
-          "status": "off"
-        },
-        {
-          "start": "16:00",
-          "end": "24:00",
-          "status": "on"
-        }
-      ]
-    }
+    "today": null,
+    "tomorrow": null
   },
   "source": {
     "label": "єСвітло • Київська область",
-    "url": "https://t.me/esvitlo_kyiv_oblast/7573"
+    "url": "https://t.me/esvitlo_kyiv_oblast"
   },
   "disclaimer": "Графік є плановим і може змінюватися. Фактичний стан показано окремо за результатом останньої перевірки."
 }
