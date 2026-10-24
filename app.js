@@ -17,7 +17,7 @@
 
   const el = (id) => document.getElementById(id);
   let latestData = null;
-  const STALE_AFTER_MS = 5 * 60 * 1000;
+
 
   function formatDuration(milliseconds) {
     const totalMinutes = Math.max(0, Math.floor(milliseconds / 60000));
@@ -37,13 +37,11 @@
     return `через ${formatDuration(remaining)}`;
   }
 
-  function staleDataMessage(status, checkedAt, now = new Date()) {
+  function degradationMessage(status, statusChangedAt, now = new Date()) {
     if (safeStatus(status) !== "unknown") return "";
-    const checked = new Date(checkedAt);
-    if (Number.isNaN(checked.getTime())) return "Дані давно не оновлювалися.";
-    const age = now - checked;
-    if (age < STALE_AFTER_MS) return "";
-    return `Дані не оновлювалися ${formatDuration(age)}.`;
+    const changed = new Date(statusChangedAt);
+    if (Number.isNaN(changed.getTime())) return "Статус залишається невідомим.";
+    return `Статус залишається невідомим ${formatDuration(now - changed)}.`;
   }
 
   function plannedTransitionLabel(status) {
@@ -85,7 +83,7 @@
   globalThis.__familySvitloTime = {
     formatDuration,
     formatCountdown,
-    staleDataMessage,
+    degradationMessage,
     plannedTransitionLabel,
     currentTimeMarker,
     scheduleDateLabel,
@@ -165,7 +163,7 @@
 
   function updateTemporalText(data, now = new Date()) {
     const normalized = safeStatus(data.status);
-    const changedAt = new Date(data.actualChangedAt);
+    const changedAt = new Date(data.statusChangedAt || data.actualChangedAt);
     if ((normalized === "on" || normalized === "off") && !Number.isNaN(changedAt.getTime())) {
       const prefix = normalized === "on" ? "Світло є вже" : "Світла немає вже";
       el("status-description").textContent = `${prefix} ${formatDuration(now - changedAt)}.`;
@@ -181,7 +179,7 @@
     }
 
     const freshnessWarning = el("freshness-warning");
-    const freshnessMessage = staleDataMessage(data.status, data.checkedAt, now);
+    const freshnessMessage = degradationMessage(data.status, data.statusChangedAt || data.actualChangedAt, now);
     freshnessWarning.hidden = !freshnessMessage;
     freshnessWarning.textContent = freshnessMessage;
 
