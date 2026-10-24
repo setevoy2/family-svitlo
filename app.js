@@ -220,10 +220,11 @@
       const end = parseTime(period.end);
       if (start !== null && end !== null && end > start) offMinutes += end - start;
     }
-    if (!offMinutes) return "без відключень";
+    if (!offMinutes) return "за графіком: без відключень";
     const hours = Math.floor(offMinutes / 60);
     const minutes = offMinutes % 60;
-    return `без світла ${hours ? `${hours} год` : ""}${hours && minutes ? " " : ""}${minutes ? `${minutes} хв` : ""}`;
+    const duration = `${hours ? `${hours} год` : ""}${hours && minutes ? " " : ""}${minutes ? `${minutes} хв` : ""}`;
+    return `за графіком: ${duration} без світла`;
   }
 
   function validPeriods(periods) {
