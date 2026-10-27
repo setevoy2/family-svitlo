@@ -3,12 +3,12 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "off",
-  "observedAt": "2026-10-27T08:48:01.890217+02:00",
+  "observedAt": "2026-10-27T09:02:01.952083+02:00",
   "statusChangedAt": "2026-10-27T08:46:01.723492+02:00",
-  "publishedAt": "2026-10-27T08:48:01.890217+02:00",
+  "publishedAt": "2026-10-27T09:02:01.952083+02:00",
   "nextTransition": {
-    "status": "off",
-    "at": "2026-10-27T13:00:00+02:00"
+    "status": "on",
+    "at": "2026-10-27T10:00:00+02:00"
   },
   "emergencyMode": {
     "state": "normal",
@@ -39,26 +39,26 @@
       "periods": [
         {
           "start": "00:00",
-          "end": "13:00",
+          "end": "08:30",
           "status": "on"
         },
         {
-          "start": "13:00",
-          "end": "13:30",
+          "start": "08:30",
+          "end": "10:00",
           "status": "off"
         },
         {
-          "start": "13:30",
+          "start": "10:00",
           "end": "16:30",
           "status": "on"
         },
         {
           "start": "16:30",
-          "end": "21:00",
+          "end": "20:30",
           "status": "off"
         },
         {
-          "start": "21:00",
+          "start": "20:30",
           "end": "24:00",
           "status": "on"
         }
@@ -68,7 +68,7 @@
   },
   "source": {
     "label": "єСвітло • Київська область",
-    "url": "https://t.me/esvitlo_kyiv_oblast/7639"
+    "url": "https://www.dtek-krem.com.ua/ua/shutdowns"
   },
   "disclaimer": "Графік є плановим і може змінюватися. Фактичний стан показано окремо за результатом останньої перевірки."
 }
