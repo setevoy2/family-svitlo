@@ -3,13 +3,10 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "off",
-  "observedAt": "2026-10-29T21:38:01.442932+02:00",
+  "observedAt": "2026-10-30T00:00:01.990149+02:00",
   "statusChangedAt": "2026-10-29T21:37:01.371415+02:00",
-  "publishedAt": "2026-10-29T21:38:01.442932+02:00",
-  "nextTransition": {
-    "status": "on",
-    "at": "2026-10-30T00:00:00+02:00"
-  },
+  "publishedAt": "2026-10-30T00:00:01.990149+02:00",
+  "nextTransition": null,
   "emergencyMode": {
     "state": "normal",
     "type": null,
@@ -21,86 +18,21 @@
     }
   },
   "actualTimeline": {
-    "date": "2026-10-29",
+    "date": "2026-10-30",
     "transitions": [
       {
-        "at": "2026-10-29T00:00:00+02:00",
-        "status": "on"
-      },
-      {
-        "at": "2026-10-29T11:11:00+02:00",
-        "status": "off"
-      },
-      {
-        "at": "2026-10-29T18:10:00+02:00",
-        "status": "on"
-      },
-      {
-        "at": "2026-10-29T21:38:00+02:00",
+        "at": "2026-10-30T00:00:00+02:00",
         "status": "off"
       }
     ]
   },
   "schedules": {
-    "today": {
-      "date": "2026-10-29",
-      "periods": [
-        {
-          "start": "00:00",
-          "end": "10:30",
-          "status": "on"
-        },
-        {
-          "start": "10:30",
-          "end": "18:00",
-          "status": "off"
-        },
-        {
-          "start": "18:00",
-          "end": "21:00",
-          "status": "on"
-        },
-        {
-          "start": "21:00",
-          "end": "24:00",
-          "status": "off"
-        }
-      ]
-    },
-    "tomorrow": {
-      "date": "2026-10-30",
-      "periods": [
-        {
-          "start": "00:00",
-          "end": "07:30",
-          "status": "on"
-        },
-        {
-          "start": "07:30",
-          "end": "11:30",
-          "status": "off"
-        },
-        {
-          "start": "11:30",
-          "end": "18:00",
-          "status": "on"
-        },
-        {
-          "start": "18:00",
-          "end": "21:00",
-          "status": "off"
-        },
-        {
-          "start": "21:00",
-          "end": "24:00",
-          "status": "on"
-        }
-      ]
-    }
+    "today": null,
+    "tomorrow": null
   },
   "source": {
     "label": "ДТЕК • Київські регіональні електромережі",
-    "url": "https://t.me/esvitlo_kyiv_oblast/7708"
+    "url": "https://www.dtek-krem.com.ua/ua/shutdowns"
   },
   "disclaimer": "Графік є плановим і може змінюватися. Фактичний стан показано окремо за результатом останньої перевірки."
 }
