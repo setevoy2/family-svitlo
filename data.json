@@ -3,9 +3,9 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "off",
-  "observedAt": "2026-10-30T18:00:02.025271+02:00",
+  "observedAt": "2026-10-30T18:10:01.955942+02:00",
   "statusChangedAt": "2026-10-30T07:55:01.776639+02:00",
-  "publishedAt": "2026-10-30T18:00:02.025271+02:00",
+  "publishedAt": "2026-10-30T18:10:01.955942+02:00",
   "nextTransition": {
     "status": "on",
     "at": "2026-10-30T21:00:00+02:00"
@@ -13,11 +13,11 @@
   "emergencyMode": {
     "state": "emergency",
     "type": "accident",
-    "announcedAt": "2026-10-30T09:38:08+00:00",
+    "announcedAt": "2026-10-30T16:08:44+00:00",
     "stale": false,
     "source": {
       "label": "єСвітло • Київська область",
-      "url": "https://t.me/esvitlo_kyiv_oblast/7718"
+      "url": "https://t.me/esvitlo_kyiv_oblast/7724"
     }
   },
   "actualTimeline": {
