@@ -3,13 +3,10 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "on",
-  "observedAt": "2026-10-30T22:00:01.599134+02:00",
+  "observedAt": "2026-10-31T00:00:01.215383+02:00",
   "statusChangedAt": "2026-10-30T18:28:01.541121+02:00",
-  "publishedAt": "2026-10-30T22:00:01.599134+02:00",
-  "nextTransition": {
-    "status": "off",
-    "at": "2026-10-31T15:00:00+02:00"
-  },
+  "publishedAt": "2026-10-31T00:00:01.215383+02:00",
+  "nextTransition": null,
   "emergencyMode": {
     "state": "emergency",
     "type": "accident",
@@ -21,85 +18,17 @@
     }
   },
   "actualTimeline": {
-    "date": "2026-10-30",
+    "date": "2026-10-31",
     "transitions": [
       {
-        "at": "2026-10-30T00:00:00+02:00",
-        "status": "off"
-      },
-      {
-        "at": "2026-10-30T00:40:00+02:00",
-        "status": "on"
-      },
-      {
-        "at": "2026-10-30T03:31:00+02:00",
-        "status": "off"
-      },
-      {
-        "at": "2026-10-30T04:04:00+02:00",
-        "status": "on"
-      },
-      {
-        "at": "2026-10-30T07:56:00+02:00",
-        "status": "off"
-      },
-      {
-        "at": "2026-10-30T18:29:00+02:00",
+        "at": "2026-10-31T00:00:00+02:00",
         "status": "on"
       }
     ]
   },
   "schedules": {
-    "today": {
-      "date": "2026-10-30",
-      "periods": [
-        {
-          "start": "00:00",
-          "end": "07:30",
-          "status": "on"
-        },
-        {
-          "start": "07:30",
-          "end": "11:30",
-          "status": "off"
-        },
-        {
-          "start": "11:30",
-          "end": "18:00",
-          "status": "on"
-        },
-        {
-          "start": "18:00",
-          "end": "22:00",
-          "status": "off"
-        },
-        {
-          "start": "22:00",
-          "end": "24:00",
-          "status": "on"
-        }
-      ]
-    },
-    "tomorrow": {
-      "date": "2026-10-31",
-      "periods": [
-        {
-          "start": "00:00",
-          "end": "15:00",
-          "status": "on"
-        },
-        {
-          "start": "15:00",
-          "end": "19:00",
-          "status": "off"
-        },
-        {
-          "start": "19:00",
-          "end": "24:00",
-          "status": "on"
-        }
-      ]
-    }
+    "today": null,
+    "tomorrow": null
   },
   "source": {
     "label": "ДТЕК • Київські регіональні електромережі",
