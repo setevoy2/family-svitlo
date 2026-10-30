@@ -3,9 +3,9 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "on",
-  "observedAt": "2026-10-30T21:12:01.590225+02:00",
+  "observedAt": "2026-10-30T21:26:01.656771+02:00",
   "statusChangedAt": "2026-10-30T18:28:01.541121+02:00",
-  "publishedAt": "2026-10-30T21:12:01.590225+02:00",
+  "publishedAt": "2026-10-30T21:26:01.656771+02:00",
   "nextTransition": {
     "status": "on",
     "at": "2026-10-30T22:00:00+02:00"
@@ -103,7 +103,7 @@
   },
   "source": {
     "label": "ДТЕК • Київські регіональні електромережі",
-    "url": "https://t.me/esvitlo_kyiv_oblast/7734"
+    "url": "https://www.dtek-krem.com.ua/ua/shutdowns"
   },
   "disclaimer": "Графік є плановим і може змінюватися. Фактичний стан показано окремо за результатом останньої перевірки."
 }
