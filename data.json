@@ -2,10 +2,10 @@
   "schemaVersion": 4,
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
-  "status": "off",
-  "observedAt": "2026-10-31T02:18:01.862370+02:00",
-  "statusChangedAt": "2026-10-31T02:17:01.733222+02:00",
-  "publishedAt": "2026-10-31T02:18:01.862370+02:00",
+  "status": "on",
+  "observedAt": "2026-10-31T02:38:01.600630+02:00",
+  "statusChangedAt": "2026-10-31T02:36:01.389391+02:00",
+  "publishedAt": "2026-10-31T02:38:01.600630+02:00",
   "nextTransition": {
     "status": "off",
     "at": "2026-10-31T15:00:00+02:00"
@@ -30,6 +30,10 @@
       {
         "at": "2026-10-31T02:18:00+02:00",
         "status": "off"
+      },
+      {
+        "at": "2026-10-31T02:37:00+02:00",
+        "status": "on"
       }
     ]
   },
