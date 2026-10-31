@@ -3,9 +3,9 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "off",
-  "observedAt": "2026-10-31T02:56:01.149525+02:00",
+  "observedAt": "2026-10-31T07:42:01.510080+02:00",
   "statusChangedAt": "2026-10-31T02:55:02.039758+02:00",
-  "publishedAt": "2026-10-31T02:56:01.149525+02:00",
+  "publishedAt": "2026-10-31T07:42:01.510080+02:00",
   "nextTransition": {
     "status": "off",
     "at": "2026-10-31T15:00:00+02:00"
@@ -13,11 +13,11 @@
   "emergencyMode": {
     "state": "emergency",
     "type": "accident",
-    "announcedAt": "2026-10-30T16:08:44+00:00",
+    "announcedAt": "2026-10-31T07:40:01.345625+02:00",
     "stale": false,
     "source": {
-      "label": "єСвітло • Київська область",
-      "url": "https://t.me/esvitlo_kyiv_oblast/7724"
+      "label": "ДТЕК • Київські регіональні електромережі",
+      "url": "https://www.dtek-krem.com.ua/ua/shutdowns"
     }
   },
   "actualTimeline": {
