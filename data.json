@@ -3,9 +3,9 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "on",
-  "observedAt": "2026-11-01T22:44:01.551030+02:00",
+  "observedAt": "2026-11-01T22:50:02.124477+02:00",
   "statusChangedAt": "2026-11-01T21:20:02.098192+02:00",
-  "publishedAt": "2026-11-01T22:44:01.551030+02:00",
+  "publishedAt": "2026-11-01T22:50:02.124477+02:00",
   "nextTransition": {
     "status": "off",
     "at": "2026-11-02T12:00:00+02:00"
@@ -70,7 +70,7 @@
     },
     {
       "label": "Лінія 2",
-      "volts": 211,
+      "volts": 214,
       "state": "warning",
       "available": true
     }
