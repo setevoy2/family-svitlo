@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b0d0e">
+  <meta name="description" content="Публічна сторінка фактичного стану електропостачання та планового графіка ЖК Family.">
+  <title>ЖК Family • Світло</title>
+  <link id="status-favicon" rel="icon" href="favicon-unknown.20261024.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.20261101-5.css">
+  <script src="app.20261101-4.js" defer></script>
+</head>
+<body data-status="unknown">
+  <a class="skip-link" href="#main">До основного вмісту</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="./" aria-label="ЖК Family • Світло — головна">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>ЖК Family <span class="brand-divider">•</span> Світло</span>
+      </a>
+      <nav class="header-resources" aria-label="Корисні посилання">
+        <a class="resource-link" href="https://t.me/familySvitlo" target="_blank" rel="noopener noreferrer">
+          <img class="resource-logo" src="family-svitlo-group.svg" alt="" width="30" height="30">
+          <span>Група в Telegram — ЖК «Familly» Світло</span>
+        </a>
+        <a class="resource-link" href="https://t.me/DTEKKyivRegionElektromerezhiBot" target="_blank" rel="noopener noreferrer">
+          <img class="resource-logo" src="dtek-kyiv-region-bot.jpg" alt="" width="30" height="30">
+          <span>Бот ДТЕК — Київські регіональні електромережі</span>
+        </a>
+      </nav>
+      <span class="live-label"><span class="live-dot" aria-hidden="true"></span>Актуальний стан</span>
+      <a class="mobile-group-link" href="https://t.me/familySvitlo" target="_blank" rel="noopener noreferrer" aria-label="Група в Telegram — ЖК Familly Світло">
+        <img src="family-svitlo-group.svg" alt="" width="28" height="28">
+        <span>Наша група в Телеграм</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main" class="shell">
+    <section class="status-panel" aria-labelledby="status-heading">
+      <div class="status-copy">
+        <p class="eyebrow">Фактичний стан зараз</p>
+        <div class="status-line-main">
+          <div class="status-primary">
+            <div class="status-line">
+              <span class="status-orb" aria-hidden="true"><span></span></span>
+              <h1 id="status-heading" class="status-title">Перевіряємо…</h1>
+            </div>
+            <p id="status-description" class="status-description">Отримуємо останні дані про електропостачання.</p>
+          </div>
+          <div class="status-aside">
+          <aside id="emergency-panel" class="emergency-panel" aria-label="Режим енергосистеми" hidden>
+            <div><strong id="emergency-heading">Непланові відключення</strong><span>Графік не гарантований</span></div>
+            <button id="emergency-help" class="emergency-help" type="button" aria-label="Що означає цей режим?" aria-describedby="emergency-help-tooltip">?
+              <span id="emergency-help-tooltip" class="emergency-help-tooltip" role="tooltip"></span>
+            </button>
+          </aside>
+          <div id="line-voltage-list" class="line-voltage-list" aria-label="Напруга в мережі" aria-live="polite">
+            <article class="line-voltage is-unavailable"><span class="line-voltage-label">Лінія 1</span><strong class="line-voltage-value">— В</strong><span class="line-voltage-state">немає даних</span></article>
+            <article class="line-voltage is-unavailable"><span class="line-voltage-label">Лінія 2</span><strong class="line-voltage-value">— В</strong><span class="line-voltage-state">немає даних</span></article>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="status-footer">
+        <dl class="status-meta">
+          <div>
+            <dt>Наступна зміна за графіком:</dt>
+            <dd id="next-transition">—</dd>
+          </div>
+        </dl>
+      </div>
+      <p id="freshness-warning" class="data-alert" role="status" hidden></p>
+      <p id="data-alert" class="data-alert" role="alert" hidden></p>
+    </section>
+
+    <section class="schedule-section" aria-labelledby="schedule-heading">
+      <div class="section-heading">
+        <p id="schedule-heading" class="eyebrow">Графік відключень</p>
+        <div class="legend" aria-label="Позначення графіка">
+          <span><i class="legend-swatch is-on" aria-hidden="true"></i>Світло є</span>
+          <span><i class="legend-swatch is-off" aria-hidden="true"></i>Світла немає</span>
+          <span><i class="legend-swatch is-unknown" aria-hidden="true"></i>Немає даних</span>
+        </div>
+      </div>
+
+      <div class="schedule-grid">
+        <article id="today-card" class="schedule-card" aria-labelledby="today-title">
+          <div class="card-heading">
+            <h3 id="today-title">Сьогодні</h3>
+            <span id="today-summary" class="day-summary">Завантаження</span>
+          </div>
+          <div id="today-timeline" class="timeline-host" aria-live="polite">
+            <div class="timeline-skeleton" aria-hidden="true"></div>
+          </div>
+        </article>
+
+        <aside id="weekly-actual" class="weekly-actual" aria-labelledby="weekly-actual-heading" aria-live="polite" hidden>
+          <h2 id="weekly-actual-heading">З понеділка</h2>
+          <div class="weekly-actual-stat">
+            <span>Світло було</span>
+            <strong id="weekly-on">—</strong>
+          </div>
+          <div class="weekly-actual-stat">
+            <span>Світла не було</span>
+            <strong id="weekly-off">—</strong>
+          </div>
+        </aside>
+
+        <article id="tomorrow-card" class="schedule-card" aria-labelledby="tomorrow-title">
+          <div class="card-heading">
+            <h3 id="tomorrow-title">Завтра</h3>
+            <span id="tomorrow-summary" class="day-summary">Завантаження</span>
+          </div>
+          <div id="tomorrow-timeline" class="timeline-host" aria-live="polite">
+            <div class="timeline-skeleton" aria-hidden="true"></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <aside class="notice" aria-label="Важлива примітка">
+      <span class="notice-symbol" aria-hidden="true">i</span>
+      <div>
+        <h2>Графік є плановим</h2>
+        <p id="disclaimer">Фактичний час відключень може змінюватися. Орієнтуйтеся на великий статус угорі сторінки.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>Публічний інформаційний сервіс мешканців</p>
+      <p>Джерело: <a id="source-link" href="#" target="_blank" rel="noopener noreferrer">не вказано</a></p>
+    </div>
+  </footer>
+
+  <noscript><div class="noscript">Для відображення актуальних даних увімкніть JavaScript.</div></noscript>
+</body>
+</html>

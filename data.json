@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 6,
+  "title": "ЖК Family • Світло",
+  "timezone": "Europe/Kyiv",
+  "status": "on",
+  "observedAt": "2026-11-01T10:32:02.142736+02:00",
+  "statusChangedAt": "2026-10-31T23:19:01.393251+02:00",
+  "publishedAt": "2026-11-01T10:32:02.142736+02:00",
+  "nextTransition": {
+    "status": "off",
+    "at": "2026-11-01T12:00:00+02:00"
+  },
+  "emergencyMode": {
+    "state": "normal",
+    "type": null,
+    "announcedAt": "2026-11-01T10:30:01.966254+02:00",
+    "stale": false,
+    "source": {
+      "label": "ДТЕК • Київські регіональні електромережі",
+      "url": "https://www.dtek-krem.com.ua/ua/shutdowns"
+    }
+  },
+  "actualTimeline": {
+    "date": "2026-11-01",
+    "transitions": [
+      {
+        "at": "2026-11-01T00:00:00+02:00",
+        "status": "on"
+      }
+    ]
+  },
+  "weeklyActual": {
+    "from": "2026-10-26T00:00:00+02:00",
+    "baseUntil": "2026-10-31T23:19:01.393251+02:00",
+    "onSeconds": 324360,
+    "offSeconds": 191221,
+    "unknownSeconds": 360,
+    "currentStatus": "on"
+  },
+  "lineVoltages": [
+    {
+      "label": "Лінія 1",
+      "volts": 232,
+      "state": "normal",
+      "available": true
+    },
+    {
+      "label": "Лінія 2",
+      "volts": 220,
+      "state": "normal",
+      "available": true
+    }
+  ],
+  "schedules": {
+    "today": {
+      "date": "2026-11-01",
+      "periods": [
+        {
+          "start": "00:00",
+          "end": "12:00",
+          "status": "on"
+        },
+        {
+          "start": "12:00",
+          "end": "19:30",
+          "status": "off"
+        },
+        {
+          "start": "19:30",
+          "end": "24:00",
+          "status": "on"
+        }
+      ]
+    },
+    "tomorrow": null
+  },
+  "source": {
+    "label": "ДТЕК • Київські регіональні електромережі",
+    "url": "https://www.dtek-krem.com.ua/ua/shutdowns"
+  },
+  "disclaimer": "Графік є плановим і може змінюватися. Фактичний стан показано окремо за результатом останньої перевірки."
+}
