@@ -3,10 +3,13 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "on",
-  "observedAt": "2026-11-02T00:02:01.589268+02:00",
+  "observedAt": "2026-11-02T00:04:01.790489+02:00",
   "statusChangedAt": "2026-11-01T21:20:02.098192+02:00",
-  "publishedAt": "2026-11-02T00:02:01.589268+02:00",
-  "nextTransition": null,
+  "publishedAt": "2026-11-02T00:04:01.790489+02:00",
+  "nextTransition": {
+    "status": "off",
+    "at": "2026-11-02T12:00:00+02:00"
+  },
   "emergencyMode": {
     "state": "emergency",
     "type": "accident",
@@ -49,7 +52,36 @@
     }
   ],
   "schedules": {
-    "today": null,
+    "today": {
+      "date": "2026-11-02",
+      "periods": [
+        {
+          "start": "00:00",
+          "end": "12:00",
+          "status": "on"
+        },
+        {
+          "start": "12:00",
+          "end": "16:30",
+          "status": "off"
+        },
+        {
+          "start": "16:30",
+          "end": "19:30",
+          "status": "on"
+        },
+        {
+          "start": "19:30",
+          "end": "21:00",
+          "status": "off"
+        },
+        {
+          "start": "21:00",
+          "end": "24:00",
+          "status": "on"
+        }
+      ]
+    },
     "tomorrow": null
   },
   "source": {
