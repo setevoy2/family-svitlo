@@ -3,21 +3,21 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "on",
-  "observedAt": "2026-11-01T08:54:01.995554+02:00",
+  "observedAt": "2026-11-01T08:56:01.223274+02:00",
   "statusChangedAt": "2026-10-31T23:19:01.393251+02:00",
-  "publishedAt": "2026-11-01T08:54:01.995554+02:00",
+  "publishedAt": "2026-11-01T08:56:01.223274+02:00",
   "nextTransition": {
     "status": "off",
     "at": "2026-11-01T12:00:00+02:00"
   },
   "emergencyMode": {
-    "state": "normal",
-    "type": null,
-    "announcedAt": "2026-11-01T08:52:01.904809+02:00",
+    "state": "emergency",
+    "type": "accident",
+    "announcedAt": "2026-10-31T10:33:42+00:00",
     "stale": false,
     "source": {
-      "label": "ДТЕК • Київські регіональні електромережі",
-      "url": "https://www.dtek-krem.com.ua/ua/shutdowns"
+      "label": "єСвітло • Київська область",
+      "url": "https://t.me/esvitlo_kyiv_oblast/7745"
     }
   },
   "actualTimeline": {
@@ -38,7 +38,7 @@
     },
     {
       "label": "Лінія 2",
-      "volts": 221,
+      "volts": 219,
       "state": "normal",
       "available": true
     }
