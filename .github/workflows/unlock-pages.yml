@@ -10,6 +10,7 @@ permissions:
   actions: write
   contents: read
   deployments: write
+  pages: write
 
 jobs:
   unlock:
@@ -63,3 +64,11 @@ jobs:
               exit 1
             fi
           done
+
+          echo "Requesting a fresh branch-based Pages build after cleanup."
+          build_code="$(curl --silent --show-error -L -o /dev/null -w '%{http_code}' \
+            -X POST "${auth[@]}" "${api}/pages/builds")"
+          echo "Pages build request HTTP ${build_code}"
+          if [[ "${build_code}" != "201" && "${build_code}" != "202" ]]; then
+            exit 1
+          fi
