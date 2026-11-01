@@ -410,7 +410,8 @@
       const card = document.createElement("article");
       const allowedState = Object.prototype.hasOwnProperty.call(stateLabels, line?.state) ? line.state : "unavailable";
       const expectedLabel = `Лінія ${index + 1}`;
-      const validVoltage = line?.available === true && Number.isInteger(line?.volts) && line.volts >= 11 && line.volts <= 300;
+      const voltageStates = new Set(["normal", "warning", "danger"]);
+      const validVoltage = line?.available === true && voltageStates.has(allowedState) && Number.isInteger(line?.volts) && line.volts >= 11 && line.volts <= 300;
       const state = validVoltage ? allowedState : (allowedState === "absent" ? "absent" : "unavailable");
       card.className = `line-voltage is-${state}`;
 
