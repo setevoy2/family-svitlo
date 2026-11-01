@@ -3,15 +3,15 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "on",
-  "observedAt": "2026-11-01T20:58:01.698595+02:00",
+  "observedAt": "2026-11-01T21:00:01.863678+02:00",
   "statusChangedAt": "2026-11-01T20:55:01.413473+02:00",
-  "publishedAt": "2026-11-01T20:58:01.698595+02:00",
+  "publishedAt": "2026-11-01T21:00:01.863678+02:00",
   "nextTransition": null,
   "emergencyMode": {
     "state": "emergency",
     "type": "accident",
     "announcedAt": "2026-11-01T20:56:01.489773+02:00",
-    "stale": false,
+    "stale": true,
     "source": {
       "label": "ДТЕК • Київські регіональні електромережі",
       "url": "https://www.dtek-krem.com.ua/ua/shutdowns"
