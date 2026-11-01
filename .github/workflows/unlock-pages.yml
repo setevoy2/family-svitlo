@@ -19,7 +19,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
-          STALE_SHA: 4c205967bbd390ffdbf74942a0bdc6860e9946a7
+          CURRENT_SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
 
@@ -33,11 +33,11 @@ jobs:
           deployments="$(curl --fail --silent --show-error -L "${auth[@]}" \
             "${api}/deployments?environment=github-pages&per_page=100")"
 
-          mapfile -t deployment_ids < <(jq -r --arg sha "${STALE_SHA}" \
-            '.[] | select(.sha == $sha) | .id' <<<"${deployments}")
+          mapfile -t deployment_ids < <(jq -r --arg current_sha "${CURRENT_SHA}" \
+            '.[] | select(.sha != $current_sha) | .id' <<<"${deployments}")
 
           if ((${#deployment_ids[@]} == 0)); then
-            echo "No deployment record found for stale SHA ${STALE_SHA}."
+            echo "No stale deployment records found."
           fi
 
           for deployment_id in "${deployment_ids[@]}"; do
@@ -50,8 +50,8 @@ jobs:
           runs="$(curl --fail --silent --show-error -L "${auth[@]}" \
             "${api}/actions/runs?status=queued&per_page=100")"
 
-          mapfile -t queued_run_ids < <(jq -r \
-            '.workflow_runs[] | select(.name == "pages build and deployment") | .id' \
+          mapfile -t queued_run_ids < <(jq -r --arg current_sha "${CURRENT_SHA}" \
+            '.workflow_runs[] | select(.name == "pages build and deployment" and .head_sha != $current_sha) | .id' \
             <<<"${runs}")
 
           for run_id in "${queued_run_ids[@]}"; do
