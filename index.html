@@ -8,8 +8,8 @@
   <meta name="description" content="Публічна сторінка фактичного стану електропостачання та планового графіка ЖК Family.">
   <title>ЖК Family • Світло</title>
   <link id="status-favicon" rel="icon" href="favicon-unknown.20261024.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.20261101-4.css">
-  <script src="app.20261101-3.js" defer></script>
+  <link rel="stylesheet" href="styles.20261101-5.css">
+  <script src="app.20261101-4.js" defer></script>
 </head>
 <body data-status="unknown">
   <a class="skip-link" href="#main">До основного вмісту</a>
@@ -98,6 +98,18 @@
           </div>
         </article>
 
+        <aside id="weekly-actual" class="weekly-actual" aria-labelledby="weekly-actual-heading" aria-live="polite" hidden>
+          <h2 id="weekly-actual-heading">З понеділка</h2>
+          <div class="weekly-actual-stat">
+            <span>Світло було</span>
+            <strong id="weekly-on">—</strong>
+          </div>
+          <div class="weekly-actual-stat">
+            <span>Світла не було</span>
+            <strong id="weekly-off">—</strong>
+          </div>
+        </aside>
+
         <article id="tomorrow-card" class="schedule-card" aria-labelledby="tomorrow-title">
           <div class="card-heading">
             <h3 id="tomorrow-title">Завтра</h3>
@@ -108,22 +120,6 @@
           </div>
         </article>
       </div>
-      <aside id="weekly-actual" class="weekly-actual is-unavailable" aria-labelledby="weekly-actual-heading" aria-live="polite">
-        <h2 id="weekly-actual-heading">З понеділка</h2>
-        <div class="weekly-actual-stat">
-          <span>Світло було</span>
-          <strong id="weekly-on">—</strong>
-        </div>
-        <div class="weekly-actual-stat">
-          <span>Світла не було</span>
-          <strong id="weekly-off">—</strong>
-        </div>
-        <div id="weekly-unknown-wrap" class="weekly-actual-unknown" hidden>
-          <span>Немає даних</span>
-          <strong id="weekly-unknown">—</strong>
-        </div>
-        <p id="weekly-unavailable" class="weekly-actual-unavailable">Немає даних</p>
-      </aside>
     </section>
 
     <aside class="notice" aria-label="Важлива примітка">
