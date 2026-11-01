@@ -2,15 +2,15 @@
   "schemaVersion": 6,
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
-  "status": "off",
-  "observedAt": "2026-11-01T21:20:02.124902+02:00",
-  "statusChangedAt": "2026-11-01T21:07:01.455684+02:00",
-  "publishedAt": "2026-11-01T21:20:02.124902+02:00",
+  "status": "on",
+  "observedAt": "2026-11-01T21:22:01.218009+02:00",
+  "statusChangedAt": "2026-11-01T21:20:02.098192+02:00",
+  "publishedAt": "2026-11-01T21:22:01.218009+02:00",
   "nextTransition": null,
   "emergencyMode": {
     "state": "emergency",
     "type": "accident",
-    "announcedAt": "2026-11-01T21:18:01.936657+02:00",
+    "announcedAt": "2026-11-01T21:20:02.091814+02:00",
     "stale": false,
     "source": {
       "label": "ДТЕК • Київські регіональні електромережі",
@@ -43,27 +43,31 @@
       {
         "at": "2026-11-01T21:08:00+02:00",
         "status": "off"
+      },
+      {
+        "at": "2026-11-01T21:21:00+02:00",
+        "status": "on"
       }
     ]
   },
   "weeklyActual": {
     "from": "2026-10-26T00:00:00+02:00",
-    "baseUntil": "2026-11-01T21:07:01.455684+02:00",
-    "onSeconds": 369241,
-    "offSeconds": 224820,
+    "baseUntil": "2026-11-01T21:20:02.098192+02:00",
+    "onSeconds": 369300,
+    "offSeconds": 225542,
     "unknownSeconds": 360,
-    "currentStatus": "off"
+    "currentStatus": "on"
   },
   "lineVoltages": [
     {
       "label": "Лінія 1",
-      "volts": 214,
+      "volts": 213,
       "state": "warning",
       "available": true
     },
     {
       "label": "Лінія 2",
-      "volts": 206,
+      "volts": 210,
       "state": "warning",
       "available": true
     }
