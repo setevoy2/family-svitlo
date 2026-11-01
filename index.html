@@ -8,8 +8,8 @@
   <meta name="description" content="Публічна сторінка фактичного стану електропостачання та планового графіка ЖК Family.">
   <title>ЖК Family • Світло</title>
   <link id="status-favicon" rel="icon" href="favicon-unknown.20261024.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.20261101-1.css">
-  <script src="app.20261101-1.js" defer></script>
+  <link rel="stylesheet" href="styles.20261101-2.css">
+  <script src="app.20261101-2.js" defer></script>
 </head>
 <body data-status="unknown">
   <a class="skip-link" href="#main">До основного вмісту</a>
@@ -50,26 +50,21 @@
             </div>
             <p id="status-description" class="status-description">Отримуємо останні дані про електропостачання.</p>
           </div>
+          <div class="status-aside">
           <aside id="emergency-panel" class="emergency-panel" aria-label="Режим енергосистеми" hidden>
             <div><strong id="emergency-heading">Непланові відключення</strong><span>Графік не гарантований</span></div>
             <button id="emergency-help" class="emergency-help" type="button" aria-label="Що означає цей режим?" aria-describedby="emergency-help-tooltip">?
               <span id="emergency-help-tooltip" class="emergency-help-tooltip" role="tooltip"></span>
             </button>
           </aside>
+          <div id="line-voltage-list" class="line-voltage-list" aria-label="Напруга в мережі" aria-live="polite">
+            <article class="line-voltage is-unavailable"><span class="line-voltage-label">Лінія 1</span><strong class="line-voltage-value">— В</strong><span class="line-voltage-state">немає даних</span></article>
+            <article class="line-voltage is-unavailable"><span class="line-voltage-label">Лінія 2</span><strong class="line-voltage-value">— В</strong><span class="line-voltage-state">немає даних</span></article>
+          </div>
+          </div>
         </div>
       </div>
-      <div id="line-voltage-list" class="line-voltage-list" aria-label="Напруга в мережі" aria-live="polite">
-        <article class="line-voltage is-unavailable">
-          <span class="line-voltage-label">Лінія 1</span>
-          <strong class="line-voltage-value">— В</strong>
-          <span class="line-voltage-state">немає даних</span>
-        </article>
-        <article class="line-voltage is-unavailable">
-          <span class="line-voltage-label">Лінія 2</span>
-          <strong class="line-voltage-value">— В</strong>
-          <span class="line-voltage-state">немає даних</span>
-        </article>
-      </div>
+
       <div class="status-footer">
         <dl class="status-meta">
           <div>
