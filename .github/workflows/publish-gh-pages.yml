@@ -1,0 +1,62 @@
+name: Publish static site to gh-pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-gh-pages
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Publish static files to gh-pages
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          publish_dir="$(mktemp -d)"
+          trap 'rm -rf "${publish_dir}"' EXIT
+
+          tar \
+            --exclude=.git \
+            --exclude=.github \
+            --exclude=README.md \
+            -cf - . | tar -xf - -C "${publish_dir}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
+            git fetch origin gh-pages
+            git switch -C gh-pages origin/gh-pages
+            git rm -rf . 2>/dev/null || true
+          else
+            git switch --orphan gh-pages
+            git rm -rf . 2>/dev/null || true
+          fi
+
+          tar -cf - -C "${publish_dir}" . | tar -xf -
+          touch .nojekyll
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "Published files are unchanged."
+            exit 0
+          fi
+
+          git commit -m "Publish ${SOURCE_SHA}"
+          git push origin gh-pages
