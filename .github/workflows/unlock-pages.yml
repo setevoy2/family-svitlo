@@ -1,0 +1,65 @@
+name: Unlock stuck GitHub Pages deployment
+
+on:
+  push:
+    paths:
+      - .github/workflows/unlock-pages.yml
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+  deployments: write
+
+jobs:
+  unlock:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark stale Pages deployments inactive and force-cancel queued Pages runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          STALE_SHA: 4c205967bbd390ffdbf74942a0bdc6860e9946a7
+        run: |
+          set -euo pipefail
+
+          api="https://api.github.com/repos/${REPOSITORY}"
+          auth=(
+            -H "Accept: application/vnd.github+json"
+            -H "Authorization: Bearer ${GH_TOKEN}"
+            -H "X-GitHub-Api-Version: 2022-11-28"
+          )
+
+          deployments="$(curl --fail --silent --show-error -L "${auth[@]}" \
+            "${api}/deployments?environment=github-pages&per_page=100")"
+
+          mapfile -t deployment_ids < <(jq -r --arg sha "${STALE_SHA}" \
+            '.[] | select(.sha == $sha) | .id' <<<"${deployments}")
+
+          if ((${#deployment_ids[@]} == 0)); then
+            echo "No deployment record found for stale SHA ${STALE_SHA}."
+          fi
+
+          for deployment_id in "${deployment_ids[@]}"; do
+            echo "Marking deployment ${deployment_id} inactive."
+            curl --fail --silent --show-error -L -X POST "${auth[@]}" \
+              "${api}/deployments/${deployment_id}/statuses" \
+              -d '{"state":"inactive"}' >/dev/null
+          done
+
+          runs="$(curl --fail --silent --show-error -L "${auth[@]}" \
+            "${api}/actions/runs?status=queued&per_page=100")"
+
+          mapfile -t queued_run_ids < <(jq -r \
+            '.workflow_runs[] | select(.name == "pages build and deployment") | .id' \
+            <<<"${runs}")
+
+          for run_id in "${queued_run_ids[@]}"; do
+            echo "Requesting force-cancel for queued Pages run ${run_id}."
+            code="$(curl --silent --show-error -L -o /dev/null -w '%{http_code}' \
+              -X POST "${auth[@]}" "${api}/actions/runs/${run_id}/force-cancel")"
+            echo "force-cancel HTTP ${code}"
+            if [[ "${code}" != "202" && "${code}" != "409" ]]; then
+              exit 1
+            fi
+          done
