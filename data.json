@@ -3,18 +3,21 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "off",
-  "observedAt": "2026-11-04T00:00:02.010274+02:00",
+  "observedAt": "2026-11-04T00:04:01.450947+02:00",
   "statusChangedAt": "2026-11-03T16:47:01.252309+02:00",
-  "publishedAt": "2026-11-04T00:00:02.010274+02:00",
-  "nextTransition": null,
+  "publishedAt": "2026-11-04T00:04:01.450947+02:00",
+  "nextTransition": {
+    "status": "off",
+    "at": "2026-11-04T03:00:00+02:00"
+  },
   "emergencyMode": {
     "state": "emergency",
     "type": "emergency",
-    "announcedAt": "2026-11-03T18:16:08+00:00",
+    "announcedAt": "2026-11-03T22:01:15+00:00",
     "stale": false,
     "source": {
       "label": "єСвітло • Київська область",
-      "url": "https://t.me/esvitlo_kyiv_oblast/7833"
+      "url": "https://t.me/esvitlo_kyiv_oblast/7838"
     }
   },
   "actualTimeline": {
@@ -49,7 +52,36 @@
     }
   ],
   "schedules": {
-    "today": null,
+    "today": {
+      "date": "2026-11-04",
+      "periods": [
+        {
+          "start": "00:00",
+          "end": "03:00",
+          "status": "on"
+        },
+        {
+          "start": "03:00",
+          "end": "10:30",
+          "status": "off"
+        },
+        {
+          "start": "10:30",
+          "end": "13:30",
+          "status": "on"
+        },
+        {
+          "start": "13:30",
+          "end": "21:00",
+          "status": "off"
+        },
+        {
+          "start": "21:00",
+          "end": "24:00",
+          "status": "on"
+        }
+      ]
+    },
     "tomorrow": null
   },
   "source": {
