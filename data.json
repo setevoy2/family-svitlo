@@ -3,9 +3,9 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "on",
-  "observedAt": "2026-11-08T09:10:01.610370+02:00",
+  "observedAt": "2026-11-08T09:12:01.741761+02:00",
   "statusChangedAt": "2026-11-08T09:09:01.422260+02:00",
-  "publishedAt": "2026-11-08T09:10:01.610370+02:00",
+  "publishedAt": "2026-11-08T09:12:01.741761+02:00",
   "nextTransition": {
     "status": "off",
     "at": "2026-11-08T12:00:00+02:00"
@@ -52,15 +52,15 @@
   "lineVoltages": [
     {
       "label": "Лінія 1",
-      "volts": 212,
+      "volts": 209,
       "state": "warning",
       "available": true
     },
     {
       "label": "Лінія 2",
-      "volts": 199,
-      "state": "danger",
-      "available": true
+      "volts": null,
+      "state": "absent",
+      "available": false
     }
   ],
   "schedules": {
