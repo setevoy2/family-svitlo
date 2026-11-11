@@ -2,10 +2,10 @@
   "schemaVersion": 6,
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
-  "status": "on",
-  "observedAt": "2026-11-12T01:16:01.232330+02:00",
-  "statusChangedAt": "2026-11-11T19:16:01.407781+02:00",
-  "publishedAt": "2026-11-12T01:16:01.232330+02:00",
+  "status": "off",
+  "observedAt": "2026-11-12T01:18:01.398086+02:00",
+  "statusChangedAt": "2026-11-12T01:17:01.226516+02:00",
+  "publishedAt": "2026-11-12T01:18:01.398086+02:00",
   "nextTransition": {
     "status": "on",
     "at": "2026-11-12T05:00:00+02:00"
@@ -26,29 +26,33 @@
       {
         "at": "2026-11-12T00:00:00+02:00",
         "status": "on"
+      },
+      {
+        "at": "2026-11-12T01:18:00+02:00",
+        "status": "off"
       }
     ]
   },
   "weeklyActual": {
     "from": "2026-11-09T00:00:00+02:00",
-    "baseUntil": "2026-11-11T19:16:01.407781+02:00",
-    "onSeconds": 101040,
-    "offSeconds": 141061,
+    "baseUntil": "2026-11-12T01:17:01.226516+02:00",
+    "onSeconds": 122641,
+    "offSeconds": 141120,
     "unknownSeconds": 60,
-    "currentStatus": "on"
+    "currentStatus": "off"
   },
   "lineVoltages": [
     {
       "label": "Лінія 1",
-      "volts": 231,
-      "state": "normal",
-      "available": true
+      "volts": null,
+      "state": "absent",
+      "available": false
     },
     {
       "label": "Лінія 2",
-      "volts": 228,
-      "state": "normal",
-      "available": true
+      "volts": null,
+      "state": "absent",
+      "available": false
     }
   ],
   "schedules": {
