@@ -3,10 +3,13 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "off",
-  "observedAt": "2026-11-13T00:00:01.602059+02:00",
+  "observedAt": "2026-11-13T00:04:01.981291+02:00",
   "statusChangedAt": "2026-11-12T20:41:01.741767+02:00",
-  "publishedAt": "2026-11-13T00:00:01.602059+02:00",
-  "nextTransition": null,
+  "publishedAt": "2026-11-13T00:04:01.981291+02:00",
+  "nextTransition": {
+    "status": "on",
+    "at": "2026-11-13T01:30:00+02:00"
+  },
   "emergencyMode": {
     "state": "emergency",
     "type": "accident",
@@ -38,18 +41,52 @@
     {
       "label": "Лінія 1",
       "volts": null,
-      "state": "absent",
+      "state": "unavailable",
       "available": false
     },
     {
       "label": "Лінія 2",
       "volts": null,
-      "state": "absent",
+      "state": "unavailable",
       "available": false
     }
   ],
   "schedules": {
-    "today": null,
+    "today": {
+      "date": "2026-11-13",
+      "periods": [
+        {
+          "start": "00:00",
+          "end": "01:30",
+          "status": "off"
+        },
+        {
+          "start": "01:30",
+          "end": "06:00",
+          "status": "on"
+        },
+        {
+          "start": "06:00",
+          "end": "12:00",
+          "status": "off"
+        },
+        {
+          "start": "12:00",
+          "end": "17:30",
+          "status": "on"
+        },
+        {
+          "start": "17:30",
+          "end": "22:30",
+          "status": "off"
+        },
+        {
+          "start": "22:30",
+          "end": "24:00",
+          "status": "on"
+        }
+      ]
+    },
     "tomorrow": null
   },
   "source": {
