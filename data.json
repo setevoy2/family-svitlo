@@ -3,17 +3,14 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "off",
-  "observedAt": "2026-11-15T23:58:01.557457+02:00",
+  "observedAt": "2026-11-16T00:00:01.724532+02:00",
   "statusChangedAt": "2026-11-15T22:12:02.033121+02:00",
-  "publishedAt": "2026-11-15T23:58:01.557457+02:00",
-  "nextTransition": {
-    "status": "on",
-    "at": "2026-11-16T00:00:00+02:00"
-  },
+  "publishedAt": "2026-11-16T00:00:01.724532+02:00",
+  "nextTransition": null,
   "emergencyMode": {
     "state": "emergency",
     "type": "accident",
-    "announcedAt": "2026-11-15T23:56:01.382438+02:00",
+    "announcedAt": "2026-11-15T23:58:01.509722+02:00",
     "stale": false,
     "source": {
       "label": "ДТЕК • Київські регіональні електромережі",
@@ -21,24 +18,20 @@
     }
   },
   "actualTimeline": {
-    "date": "2026-11-15",
+    "date": "2026-11-16",
     "transitions": [
       {
-        "at": "2026-11-15T00:00:00+02:00",
-        "status": "on"
-      },
-      {
-        "at": "2026-11-15T22:13:00+02:00",
+        "at": "2026-11-16T00:00:00+02:00",
         "status": "off"
       }
     ]
   },
   "weeklyActual": {
-    "from": "2026-11-09T00:00:00+02:00",
-    "baseUntil": "2026-11-15T22:12:02.033121+02:00",
-    "onSeconds": 318962,
-    "offSeconds": 279240,
-    "unknownSeconds": 120,
+    "from": "2026-11-16T00:00:00+02:00",
+    "baseUntil": "2026-11-16T00:00:00+02:00",
+    "onSeconds": 0,
+    "offSeconds": 0,
+    "unknownSeconds": 0,
     "currentStatus": "off"
   },
   "lineVoltages": [
@@ -56,56 +49,8 @@
     }
   ],
   "schedules": {
-    "today": {
-      "date": "2026-11-15",
-      "periods": [
-        {
-          "start": "00:00",
-          "end": "22:00",
-          "status": "on"
-        },
-        {
-          "start": "22:00",
-          "end": "24:00",
-          "status": "off"
-        }
-      ]
-    },
-    "tomorrow": {
-      "date": "2026-11-16",
-      "periods": [
-        {
-          "start": "00:00",
-          "end": "02:30",
-          "status": "off"
-        },
-        {
-          "start": "02:30",
-          "end": "12:00",
-          "status": "on"
-        },
-        {
-          "start": "12:00",
-          "end": "16:00",
-          "status": "off"
-        },
-        {
-          "start": "16:00",
-          "end": "20:00",
-          "status": "on"
-        },
-        {
-          "start": "20:00",
-          "end": "23:00",
-          "status": "off"
-        },
-        {
-          "start": "23:00",
-          "end": "24:00",
-          "status": "on"
-        }
-      ]
-    }
+    "today": null,
+    "tomorrow": null
   },
   "source": {
     "label": "ДТЕК • Київські регіональні електромережі",
