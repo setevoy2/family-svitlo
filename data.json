@@ -3,9 +3,9 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "off",
-  "observedAt": "2026-11-20T20:08:01.551955+02:00",
+  "observedAt": "2026-11-20T20:10:01.727676+02:00",
   "statusChangedAt": "2026-11-20T17:13:01.849556+02:00",
-  "publishedAt": "2026-11-20T20:08:01.551955+02:00",
+  "publishedAt": "2026-11-20T20:10:01.727676+02:00",
   "nextTransition": {
     "status": "on",
     "at": "2026-11-20T22:00:00+02:00"
@@ -13,7 +13,7 @@
   "emergencyMode": {
     "state": "normal",
     "type": null,
-    "announcedAt": "2026-11-20T20:06:01.374881+02:00",
+    "announcedAt": "2026-11-20T20:08:01.556031+02:00",
     "stale": false,
     "source": {
       "label": "ДТЕК • Київські регіональні електромережі",
@@ -94,7 +94,36 @@
         }
       ]
     },
-    "tomorrow": null
+    "tomorrow": {
+      "date": "2026-11-21",
+      "periods": [
+        {
+          "start": "00:00",
+          "end": "04:30",
+          "status": "on"
+        },
+        {
+          "start": "04:30",
+          "end": "08:00",
+          "status": "off"
+        },
+        {
+          "start": "08:00",
+          "end": "14:30",
+          "status": "on"
+        },
+        {
+          "start": "14:30",
+          "end": "20:30",
+          "status": "off"
+        },
+        {
+          "start": "20:30",
+          "end": "24:00",
+          "status": "on"
+        }
+      ]
+    }
   },
   "source": {
     "label": "ДТЕК • Київські регіональні електромережі",
