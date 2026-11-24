@@ -3,18 +3,18 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "on",
-  "observedAt": "2026-11-24T14:00:01.580158+02:00",
+  "observedAt": "2026-11-24T14:02:01.395417+02:00",
   "statusChangedAt": "2026-11-24T13:30:01.909034+02:00",
-  "publishedAt": "2026-11-24T14:00:01.580158+02:00",
+  "publishedAt": "2026-11-24T14:02:01.395417+02:00",
   "nextTransition": {
     "status": "off",
     "at": "2026-11-24T18:00:00+02:00"
   },
   "emergencyMode": {
-    "state": "emergency",
-    "type": "accident",
-    "announcedAt": "2026-11-24T13:46:01.355029+02:00",
-    "stale": true,
+    "state": "normal",
+    "type": null,
+    "announcedAt": "2026-11-24T14:00:01.643525+02:00",
+    "stale": false,
     "source": {
       "label": "ДТЕК • Київські регіональні електромережі",
       "url": "https://www.dtek-krem.com.ua/ua/shutdowns"
@@ -58,7 +58,7 @@
     },
     {
       "label": "Лінія 2",
-      "volts": 203,
+      "volts": 204,
       "state": "danger",
       "available": true
     }
