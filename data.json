@@ -3,9 +3,9 @@
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
   "status": "on",
-  "observedAt": "2026-11-25T20:48:02.052477+02:00",
+  "observedAt": "2026-11-25T20:50:01.303326+02:00",
   "statusChangedAt": "2026-11-25T18:07:01.169854+02:00",
-  "publishedAt": "2026-11-25T20:48:02.052477+02:00",
+  "publishedAt": "2026-11-25T20:50:01.303326+02:00",
   "nextTransition": {
     "status": "off",
     "at": "2026-11-25T23:00:00+02:00"
@@ -13,7 +13,7 @@
   "emergencyMode": {
     "state": "normal",
     "type": null,
-    "announcedAt": "2026-11-25T20:46:01.896348+02:00",
+    "announcedAt": "2026-11-25T20:48:02.011562+02:00",
     "stale": false,
     "source": {
       "label": "ДТЕК • Київські регіональні електромережі",
@@ -54,8 +54,8 @@
     },
     {
       "label": "Лінія 2",
-      "volts": 215,
-      "state": "normal",
+      "volts": 213,
+      "state": "warning",
       "available": true
     }
   ],
