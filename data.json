@@ -2,10 +2,10 @@
   "schemaVersion": 6,
   "title": "ЖК Family • Світло",
   "timezone": "Europe/Kyiv",
-  "status": "off",
-  "observedAt": "2026-11-25T23:34:01.533090+02:00",
-  "statusChangedAt": "2026-11-25T23:05:01.736983+02:00",
-  "publishedAt": "2026-11-25T23:34:01.533090+02:00",
+  "status": "on",
+  "observedAt": "2026-11-25T23:36:01.779202+02:00",
+  "statusChangedAt": "2026-11-25T23:35:01.537239+02:00",
+  "publishedAt": "2026-11-25T23:36:01.779202+02:00",
   "nextTransition": {
     "status": "on",
     "at": "2026-11-26T00:00:00+02:00"
@@ -38,21 +38,25 @@
       {
         "at": "2026-11-25T23:06:00+02:00",
         "status": "off"
+      },
+      {
+        "at": "2026-11-25T23:36:00+02:00",
+        "status": "on"
       }
     ]
   },
   "weeklyActual": {
     "from": "2026-11-23T00:00:00+02:00",
-    "baseUntil": "2026-11-25T23:05:01.736983+02:00",
-    "onSeconds": 162361,
-    "offSeconds": 92640,
+    "baseUntil": "2026-11-25T23:35:01.537239+02:00",
+    "onSeconds": 162420,
+    "offSeconds": 94381,
     "unknownSeconds": 900,
-    "currentStatus": "off"
+    "currentStatus": "on"
   },
   "lineVoltages": [
     {
       "label": "Лінія 1",
-      "volts": 220,
+      "volts": 225,
       "state": "normal",
       "available": true
     },
